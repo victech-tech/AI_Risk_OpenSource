@@ -1,6 +1,7 @@
 name: Release scanner
 
-# Runs on a v* tag. Builds the .exe files with GoReleaser, writes
+# Runs on a v* tag, or by hand: Actions > Release scanner > Run workflow,
+# entering a version such as v0.1.0 (this creates the tag on main). Builds the .exe files with GoReleaser, writes
 # checksums.txt, records build attestations (proof of which source and
 # workflow built each file), and, once SignPath is set up, sends the files
 # for signing. A maintainer approves each signing request in SignPath.
@@ -15,6 +16,11 @@ name: Release scanner
 on:
   push:
     tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to release, for example v0.1.0"
+        required: true
 
 permissions:
   contents: write
@@ -26,10 +32,21 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SIGNING_ENABLED: ${{ secrets.SIGNPATH_API_TOKEN != '' }}
+      TAG: ${{ inputs.version || github.ref_name }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Create the tag (when run by hand)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          if [ "$GITHUB_REF" != "refs/heads/main" ]; then echo "Run this from main"; exit 1; fi
+          if ! echo "$TAG" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+$'; then echo "Version must look like v0.1.0"; exit 1; fi
+          if git rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then echo "$TAG already exists"; exit 1; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "$TAG" -m "Release $TAG"
+          git push origin "$TAG"
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
@@ -53,7 +70,9 @@ jobs:
           cp dist/scanner_windows_arm64_*/ai-exposure-scanner.exe out/ai-exposure-scanner-windows-arm64.exe
           (cd out && sha256sum -c ../dist/checksums.txt)
 
+      # Attestations need a public repository on GitHub's free plans.
       - name: Attest the unsigned files
+        if: ${{ !github.event.repository.private }}
         uses: actions/attest-build-provenance@v2
         with:
           subject-path: "out/*.exe"
@@ -82,7 +101,7 @@ jobs:
           output-artifact-directory: signed
 
       - name: Attest the signed files
-        if: env.SIGNING_ENABLED == 'true'
+        if: env.SIGNING_ENABLED == 'true' && !github.event.repository.private
         uses: actions/attest-build-provenance@v2
         with:
           subject-path: "signed/*.exe"
@@ -94,10 +113,10 @@ jobs:
         run: |
           cd signed
           sha256sum *.exe > checksums.txt
-          gh release upload "$GITHUB_REF_NAME" *.exe checksums.txt --clobber --repo "$GITHUB_REPOSITORY"
+          gh release upload "$TAG" *.exe checksums.txt --clobber --repo "$GITHUB_REPOSITORY"
 
       # ----- Publish -----
       - name: Publish the release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release edit "$GITHUB_REF_NAME" --draft=false --latest --repo "$GITHUB_REPOSITORY"
+        run: gh release edit "$TAG" --draft=false --latest --repo "$GITHUB_REPOSITORY"

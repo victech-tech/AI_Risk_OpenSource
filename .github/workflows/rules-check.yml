@@ -2,7 +2,8 @@ name: Rules
 
 # Checks rule changes, and tags each rules update on main as
 # rules-YYYY.MM.DD so the website picks it up. Rule changes never trigger
-# a scanner release.
+# a scanner release. "Run workflow" (on main) creates a tag by hand, for
+# example for the first rules release.
 
 on:
   pull_request:
@@ -10,6 +11,7 @@ on:
   push:
     branches: [main]
     paths: ["rules/**"]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -34,7 +36,7 @@ jobs:
 
   tag:
     needs: check
-    if: github.event_name == 'push'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write
