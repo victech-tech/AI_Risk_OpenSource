@@ -2,6 +2,10 @@
 
 This is **Repo B** of AI Exposure Check. The full design lives in the private repo (`victech-tech/AI_Risk_Private`, `docs/DESIGN.md`); this file summarises the parts that apply here. The private repo's design doc is the source of truth.
 
+## Keep the design document up to date
+
+Any new function, bug fix or behaviour change here must also be recorded in the private repo's `docs/DESIGN.md`: a row in section 13 (Change log) and an update to the section that describes it. That file lives only in the private repo, so never copy it here.
+
 ## What this repo is
 
 - A read-only Windows scanner (Go, single static `.exe`, no installer, no admin rights) that writes a JSON report of facts.
