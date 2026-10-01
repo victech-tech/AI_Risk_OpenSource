@@ -21,7 +21,7 @@ import (
 // Set at build time by GoReleaser (see .goreleaser.yaml).
 var (
 	version   = "dev"
-	reportURL = "https://ai-exposure-check.pages.dev/report/"
+	reportURL = "https://ai-exposure-check.vinvictech.workers.dev/report/"
 )
 
 func main() {
