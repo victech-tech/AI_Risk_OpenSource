@@ -1,0 +1,191 @@
+[
+  {
+    "id": "chatgpt-desktop",
+    "name": "ChatGPT app",
+    "vendor": "OpenAI",
+    "category": "ai-assistant",
+    "match": {
+      "installedAppName": [
+        "^ChatGPT$"
+      ],
+      "processName": [
+        "^chatgpt\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "microphone",
+      "screen",
+      "files"
+    ],
+    "baseRisk": "medium",
+    "summary": "OpenAI's ChatGPT app. In voice mode it listens through your microphone. You can also let it see your screen, photos, files or other apps' windows when you share them.",
+    "howToTurnOff": {
+      "windows": "Open ChatGPT > Settings to check what it can access. To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "Open System Settings > Privacy & Security and check Microphone, Screen & System Audio Recording and Accessibility for ChatGPT. To remove it, quit it, then drag it from Applications to the Bin.",
+      "ios": "Open Settings > Apps > ChatGPT and switch off Microphone, Camera and Photos if you do not use them.",
+      "android": "Open Settings > Apps > ChatGPT > Permissions and switch off Microphone, Camera and Photos if you do not use them."
+    },
+    "links": [
+      "https://openai.com/policies/privacy-policy/"
+    ],
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "claude-desktop",
+    "name": "Claude app",
+    "vendor": "Anthropic",
+    "category": "ai-assistant",
+    "match": {
+      "installedAppName": [
+        "^Claude$"
+      ],
+      "processName": [
+        "^claude\\.exe$"
+      ],
+      "configTool": [
+        "claude-desktop"
+      ]
+    },
+    "capabilities": [
+      "files",
+      "microphone",
+      "runs-commands"
+    ],
+    "baseRisk": "medium",
+    "summary": "Anthropic's Claude app. It can read files you give it. If tool connections (called connectors or MCP servers) are added, it can also open files on your computer or run programs when you approve.",
+    "howToTurnOff": {
+      "windows": "Open Claude > Settings > Connectors (or Developer) and remove any you do not use. To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "Open Claude > Settings > Connectors and remove any you do not use. Check System Settings > Privacy & Security > Microphone. To remove it, quit it, then drag it from Applications to the Bin.",
+      "ios": "Open Settings > Apps > Claude and switch off Microphone, Camera and Photos if you do not use them.",
+      "android": "Open Settings > Apps > Claude > Permissions and switch off anything you do not use."
+    },
+    "links": [
+      "https://www.anthropic.com/legal/privacy"
+    ],
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "microsoft-copilot",
+    "name": "Microsoft Copilot app",
+    "vendor": "Microsoft",
+    "category": "ai-assistant",
+    "match": {
+      "installedAppName": [
+        "^Microsoft Copilot$",
+        "^Copilot$"
+      ],
+      "processName": [
+        "^copilot\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "screen",
+      "microphone",
+      "background"
+    ],
+    "baseRisk": "medium",
+    "summary": "Microsoft's Copilot assistant. It can listen in voice mode and, with Copilot Vision, see what is on your screen when you share it. It may start with Windows.",
+    "howToTurnOff": {
+      "windows": "Open Copilot > your profile > Settings to check voice and Vision. To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "Check System Settings > Privacy & Security > Microphone and Screen & System Audio Recording. To remove it, quit it, then drag it from Applications to the Bin.",
+      "ios": "Open Settings > Apps > Copilot and switch off Microphone, Camera and Photos if you do not use them.",
+      "android": "Open Settings > Apps > Copilot > Permissions and switch off anything you do not use."
+    },
+    "links": [
+      "https://privacy.microsoft.com/"
+    ],
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "windows-recall",
+    "name": "Recall (Windows)",
+    "vendor": "Microsoft",
+    "category": "ai-assistant",
+    "match": {},
+    "capabilities": [
+      "screen",
+      "background"
+    ],
+    "baseRisk": "high",
+    "summary": "A Windows feature on some Copilot+ PCs that saves regular snapshots of your screen so you can search them later. The snapshots stay on your PC but can include anything you had open.",
+    "howToTurnOff": {
+      "windows": "Open Settings > Privacy & security > Recall & snapshots. Switch off Save snapshots, then select Delete snapshots to remove the ones already saved."
+    },
+    "links": [
+      "https://support.microsoft.com/windows/retrace-your-steps-with-recall-aa03f8a0-a78b-4b3e-b0a1-2eb8ac48701c"
+    ],
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "google-gemini",
+    "name": "Gemini",
+    "vendor": "Google",
+    "category": "ai-assistant",
+    "match": {
+      "installedAppName": [
+        "^Google Gemini$"
+      ]
+    },
+    "capabilities": [
+      "screen",
+      "microphone",
+      "background"
+    ],
+    "baseRisk": "medium",
+    "summary": "Google's AI assistant. On Android it can replace Google Assistant, listen for \"Hey Google\", and see your screen when you ask it about what is showing.",
+    "howToTurnOff": {
+      "android": "Open the Gemini app > your profile picture > Settings. Switch off Hey Google and Gemini on lock screen if you do not use them. To stop it seeing your screen, switch off Share screen with Gemini (or similar) in the same menu.",
+      "ios": "Open Settings > Apps > Gemini (or Google) and switch off Microphone and Camera if you do not use them.",
+      "windows": "Gemini runs in your browser. Visit gemini.google.com > Settings > Apps to see which Google apps it can use.",
+      "mac": "Gemini runs in your browser. Visit gemini.google.com > Settings > Apps to see which Google apps it can use."
+    },
+    "links": [
+      "https://support.google.com/gemini/"
+    ],
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "perplexity-app",
+    "name": "Perplexity app",
+    "vendor": "Perplexity AI",
+    "category": "ai-assistant",
+    "match": {
+      "installedAppName": [
+        "^Perplexity$"
+      ],
+      "processName": [
+        "^perplexity\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "microphone"
+    ],
+    "baseRisk": "low",
+    "summary": "An AI search assistant. It listens through your microphone when you use voice search.",
+    "howToTurnOff": {
+      "windows": "To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "To remove it, quit it, then drag it from Applications to the Bin.",
+      "ios": "Open Settings > Apps > Perplexity and switch off Microphone if you do not use it.",
+      "android": "Open Settings > Apps > Perplexity > Permissions and switch off Microphone if you do not use it."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "apple-intelligence-siri",
+    "name": "Apple Intelligence and Siri",
+    "vendor": "Apple",
+    "category": "ai-assistant",
+    "match": {},
+    "capabilities": [
+      "screen",
+      "microphone"
+    ],
+    "baseRisk": "low",
+    "summary": "Apple's assistant. It listens for \"Siri\" if switched on, and with Apple Intelligence it can understand what is on your screen when you ask it to.",
+    "howToTurnOff": {
+      "ios": "Open Settings > Apple Intelligence & Siri. Switch off Listen for and anything else you do not use.",
+      "mac": "Open System Settings > Apple Intelligence & Siri. Switch off Listen for and anything else you do not use."
+    },
+    "lastReviewed": "2026-10-01"
+  }
+]

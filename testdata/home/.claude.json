@@ -1,0 +1,4 @@
+{"numStartups": 3, "oauthAccount": {"emailAddress": "FAKESECRET@example.com"},
+ "primaryApiKey": "sk-ant-api03-FAKESECRET-4444",
+ "mcpServers": {"puppeteer": {"type":"stdio","command":"npx","args":["-y","@modelcontextprotocol/server-puppeteer"],"env":{"KEY":"FAKESECRET-5555"}}},
+ "projects": {"C:\\Users\\FAKEUSER\\secret-project": {"mcpServers": {"postgres": {"command":"uvx","args":["mcp-server-postgres","postgresql://user:FAKESECRET@localhost/db"]}}}}}

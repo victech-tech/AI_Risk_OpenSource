@@ -1,0 +1,23 @@
+version: "2"
+linters:
+  default: standard
+  enable:
+    - misspell
+    - gosec
+  settings:
+    errcheck:
+      exclude-functions:
+        - fmt.Fprint
+        - fmt.Fprintf
+        - fmt.Fprintln
+        - (golang.org/x/sys/windows/registry.Key).Close
+    misspell:
+      locale: UK
+    gosec:
+      excludes:
+        - G304 # reading files from known config paths is the scanner's job
+        - G204 # opening the browser and File Explorer uses fixed commands
+  exclusions:
+    rules:
+      - path: _test\.go
+        linters: [gosec]

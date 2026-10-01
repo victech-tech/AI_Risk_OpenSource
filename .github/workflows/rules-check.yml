@@ -1,0 +1,55 @@
+name: Rules
+
+# Checks rule changes, and tags each rules update on main as
+# rules-YYYY.MM.DD so the website picks it up. Rule changes never trigger
+# a scanner release.
+
+on:
+  pull_request:
+    paths: ["rules/**"]
+  push:
+    branches: [main]
+    paths: ["rules/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate against the schema
+        run: |
+          files=$(ls rules/*.json | grep -v 'rules.schema.json' | sed 's/^/-d /')
+          npx -y ajv-cli@5 validate --spec=draft2020 --strict=false -s rules/rules.schema.json $files
+      - name: Check ids, patterns and wording
+        run: go test ./rules/
+
+  tag:
+    needs: check
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Create rules tag
+        run: |
+          base="rules-$(date -u +%Y.%m.%d)"
+          tag="$base"
+          n=1
+          while git rev-parse -q --verify "refs/tags/$tag" >/dev/null; do
+            n=$((n+1)); tag="$base.$n"
+          done
+          git tag "$tag"
+          git push origin "$tag"
+          echo "Created $tag" >> "$GITHUB_STEP_SUMMARY"

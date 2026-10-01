@@ -1,0 +1,24 @@
+name: Bug
+description: The scanner crashed, did not finish, or did something unexpected.
+title: "Bug: "
+labels: ["bug"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Scanner version
+      description: Shown at the top of the scanner window, or run ai-exposure-scanner --version
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: Windows 11 24H2
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Copy any message shown in the window. You can also copy the "errors" part of your report file, which contains no personal details.
+    validations:
+      required: true

@@ -1,0 +1,5 @@
+dist/
+*.exe
+ai-exposure-report-*.json
+!testdata/**
+out/

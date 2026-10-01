@@ -1,0 +1,9 @@
+{
+  // VS Code allows comments
+  "inputs": [{"type": "promptString", "id": "token", "password": true}],
+  "servers": {
+    "memory": {"command": "npx", "args": ["-y", "@modelcontextprotocol/server-memory"],},
+    /* block comment */
+    "fetch": {"type": "http", "url": "https://example.com/mcp", "headers": {"X-Api-Key": "FAKESECRET-7777"}},
+  },
+}

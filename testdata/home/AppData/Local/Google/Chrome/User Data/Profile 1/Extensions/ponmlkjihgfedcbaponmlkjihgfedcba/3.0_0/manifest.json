@@ -1,0 +1,1 @@
+﻿{"name":"Plain Extension","version":"3.0","manifest_version":2,"permissions":["storage",{"socket":["tcp-connect"]},"<all_urls>"]}

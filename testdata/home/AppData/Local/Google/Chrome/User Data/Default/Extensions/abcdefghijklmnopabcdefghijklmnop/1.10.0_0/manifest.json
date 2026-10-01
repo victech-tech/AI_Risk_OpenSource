@@ -1,0 +1,3 @@
+{"name":"__MSG_appName__","version":"1.10.0","default_locale":"en","manifest_version":3,
+ "permissions":["tabs","debugger","storage"],"host_permissions":["*://*/*"],
+ "content_scripts":[{"matches":["https://example.com/*?session=secret"]}]}

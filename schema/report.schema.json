@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/victech-tech/AI_Risk_OpenSource/schema/report.schema.json",
+  "title": "AI Exposure Check scanner report",
+  "description": "The file written by ai-exposure-scanner. Version 1. It never contains secrets, file contents, browsing history or the user's home folder name (shown as <user>).",
+  "type": "object",
+  "required": ["schemaVersion", "scanner", "scannedAt", "os"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "scanner": {
+      "type": "object",
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "const": "ai-exposure-scanner" },
+        "version": { "type": "string", "maxLength": 50 }
+      }
+    },
+    "scannedAt": { "type": "string", "format": "date-time" },
+    "os": {
+      "type": "object",
+      "required": ["family"],
+      "properties": {
+        "family": { "type": "string", "enum": ["windows", "darwin", "linux"] },
+        "version": { "type": "string" },
+        "edition": { "type": "string" },
+        "arch": { "type": "string" }
+      }
+    },
+    "installedApps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "scope"],
+        "properties": {
+          "name": { "type": "string", "maxLength": 200 },
+          "publisher": { "type": "string", "maxLength": 200 },
+          "version": { "type": "string", "maxLength": 200 },
+          "scope": { "type": "string", "enum": ["user", "machine"] }
+        }
+      }
+    },
+    "runningProcesses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string", "maxLength": 200 },
+          "path": { "type": "string" }
+        }
+      }
+    },
+    "startupItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "source"],
+        "properties": {
+          "name": { "type": "string", "maxLength": 200 },
+          "source": { "type": "string" },
+          "command": { "type": "string", "description": "Program name only, never arguments." }
+        }
+      }
+    },
+    "privacyPermissions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["capability", "app", "allowed"],
+        "properties": {
+          "capability": {
+            "type": "string",
+            "description": "Known values: microphone, camera, location, screen-capture, screen-capture-without-border."
+          },
+          "app": { "type": "string", "maxLength": 200 },
+          "allowed": { "type": "boolean" },
+          "lastUsed": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "browserExtensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["browser", "id", "name", "permissions"],
+        "properties": {
+          "browser": {
+            "type": "string",
+            "description": "Browser or code editor the extension belongs to.",
+            "enum": ["chrome", "edge", "brave", "firefox", "vscode", "cursor", "windsurf"]
+          },
+          "profile": { "type": "string" },
+          "id": { "type": "string", "maxLength": 200 },
+          "name": { "type": "string", "maxLength": 200 },
+          "version": { "type": "string" },
+          "permissions": { "type": "array", "items": { "type": "string" } },
+          "enabled": { "type": "boolean", "description": "Left out when the scanner cannot tell." }
+        }
+      }
+    },
+    "aiToolConfigs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["tool", "path", "mcpServers"],
+        "properties": {
+          "tool": { "type": "string" },
+          "path": { "type": "string" },
+          "mcpServers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name"],
+              "additionalProperties": false,
+              "properties": {
+                "name": { "type": "string", "maxLength": 200 },
+                "command": { "type": "string", "description": "Program name only (for example npx), or (url) for a remote server." }
+              }
+            }
+          }
+        }
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["section", "message"],
+        "properties": {
+          "section": { "type": "string" },
+          "message": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,297 @@
+[
+  {
+    "id": "teamviewer",
+    "name": "TeamViewer",
+    "vendor": "TeamViewer",
+    "category": "remote-access",
+    "match": {
+      "installedAppName": [
+        "^TeamViewer"
+      ],
+      "processName": [
+        "^teamviewer(_service)?\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "remote-access",
+      "screen",
+      "input-control",
+      "files",
+      "background"
+    ],
+    "baseRisk": "high",
+    "summary": "Remote control software. Someone with access can see your screen, use your mouse and keyboard, and copy files, from anywhere.",
+    "howToTurnOff": {
+      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording.",
+      "ios": "Delete the TeamViewer app if you do not use it.",
+      "android": "Uninstall TeamViewer (and any TeamViewer add-on) from Settings > Apps if you do not use it."
+    },
+    "links": [
+      "https://www.teamviewer.com/"
+    ],
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "anydesk",
+    "name": "AnyDesk",
+    "vendor": "AnyDesk Software",
+    "category": "remote-access",
+    "match": {
+      "installedAppName": [
+        "^AnyDesk"
+      ],
+      "processName": [
+        "^anydesk\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "remote-access",
+      "screen",
+      "input-control",
+      "files",
+      "background"
+    ],
+    "baseRisk": "high",
+    "summary": "Remote control software. Someone with access can see your screen and use your mouse and keyboard. Scammers often ask people to install it.",
+    "howToTurnOff": {
+      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording.",
+      "android": "Uninstall AnyDesk (and any AnyDesk plugin) from Settings > Apps if you do not use it."
+    },
+    "links": [
+      "https://anydesk.com/"
+    ],
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "rustdesk",
+    "name": "RustDesk",
+    "vendor": "Purslane",
+    "category": "remote-access",
+    "match": {
+      "installedAppName": [
+        "^RustDesk"
+      ],
+      "processName": [
+        "^rustdesk\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "remote-access",
+      "screen",
+      "input-control",
+      "files",
+      "background"
+    ],
+    "baseRisk": "high",
+    "summary": "Free remote control software. Someone with access can see your screen and use your mouse and keyboard.",
+    "howToTurnOff": {
+      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording.",
+      "android": "Uninstall RustDesk from Settings > Apps if you do not use it."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "chrome-remote-desktop",
+    "name": "Chrome Remote Desktop",
+    "vendor": "Google",
+    "category": "remote-access",
+    "match": {
+      "installedAppName": [
+        "^Chrome Remote Desktop Host"
+      ],
+      "processName": [
+        "^remoting_host\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "remote-access",
+      "screen",
+      "input-control",
+      "background"
+    ],
+    "baseRisk": "high",
+    "summary": "Lets someone connect to this computer from another device to see the screen and use it. It works whenever the computer is on.",
+    "howToTurnOff": {
+      "windows": "Visit remotedesktop.google.com/access and delete this computer from the list. Then uninstall Chrome Remote Desktop Host from Settings > Apps > Installed apps.",
+      "mac": "Visit remotedesktop.google.com/access and delete this computer from the list, then remove the Chrome Remote Desktop host."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "screenconnect",
+    "name": "ConnectWise ScreenConnect",
+    "vendor": "ConnectWise",
+    "category": "remote-access",
+    "match": {
+      "installedAppName": [
+        "^ScreenConnect Client",
+        "^ConnectWise Control Client"
+      ],
+      "processName": [
+        "^screenconnect\\..*\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "remote-access",
+      "screen",
+      "input-control",
+      "files",
+      "background"
+    ],
+    "baseRisk": "high",
+    "summary": "Remote support software used by IT companies. Someone with access can see and control this computer at any time it is on. Scammers sometimes use it too.",
+    "howToTurnOff": {
+      "windows": "If your workplace or IT provider did not set this up, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "splashtop",
+    "name": "Splashtop Streamer",
+    "vendor": "Splashtop",
+    "category": "remote-access",
+    "match": {
+      "installedAppName": [
+        "^Splashtop Streamer"
+      ]
+    },
+    "capabilities": [
+      "remote-access",
+      "screen",
+      "input-control",
+      "background"
+    ],
+    "baseRisk": "high",
+    "summary": "Remote access software. Someone with access can see this computer's screen and control it.",
+    "howToTurnOff": {
+      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "goto-logmein",
+    "name": "LogMeIn / GoTo Resolve",
+    "vendor": "GoTo",
+    "category": "remote-access",
+    "match": {
+      "installedAppName": [
+        "^LogMeIn",
+        "^GoTo Resolve"
+      ]
+    },
+    "capabilities": [
+      "remote-access",
+      "screen",
+      "input-control",
+      "files",
+      "background"
+    ],
+    "baseRisk": "high",
+    "summary": "Remote access and support software. Someone with access can see and control this computer.",
+    "howToTurnOff": {
+      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "vnc-server",
+    "name": "VNC server",
+    "vendor": "Various (RealVNC, TightVNC, UltraVNC)",
+    "category": "remote-access",
+    "match": {
+      "installedAppName": [
+        "^(RealVNC|TightVNC|UltraVNC|VNC Server)"
+      ],
+      "processName": [
+        "^(tvnserver|winvnc|vncserver(-x11)?|vncserverui)\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "remote-access",
+      "screen",
+      "input-control",
+      "background"
+    ],
+    "baseRisk": "high",
+    "summary": "Remote screen sharing software. Someone with the password can see and control this computer.",
+    "howToTurnOff": {
+      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "Open System Settings > General > Sharing and switch off Screen Sharing and Remote Management if you do not use them. If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "quick-assist",
+    "name": "Quick Assist",
+    "vendor": "Microsoft",
+    "category": "remote-access",
+    "match": {
+      "processName": [
+        "^quickassist\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "remote-access",
+      "screen",
+      "input-control"
+    ],
+    "baseRisk": "medium",
+    "summary": "Built into Windows. It lets someone else see or control your PC after you give them a code. Scammers often ask people to open it. Only use it with someone you know and trust.",
+    "howToTurnOff": {
+      "windows": "Close Quick Assist to end the session straight away. To remove it, open Settings > Apps > Installed apps, find Quick Assist and choose Uninstall."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "parsec",
+    "name": "Parsec",
+    "vendor": "Unity Technologies",
+    "category": "remote-access",
+    "match": {
+      "installedAppName": [
+        "^Parsec$"
+      ],
+      "processName": [
+        "^parsecd\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "remote-access",
+      "screen",
+      "input-control",
+      "background"
+    ],
+    "baseRisk": "medium",
+    "summary": "Remote desktop software, often used for games. Someone you approve can see your screen and use your keyboard and mouse.",
+    "howToTurnOff": {
+      "windows": "Open Parsec > Settings > Host and switch off hosting. If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "ios-device-management",
+    "name": "Device management profile",
+    "vendor": "Unknown",
+    "category": "other",
+    "match": {},
+    "capabilities": [
+      "remote-access",
+      "browser-data",
+      "background"
+    ],
+    "baseRisk": "high",
+    "summary": "A profile on your phone that lets an organisation manage it. Depending on what it allows, it can install apps, change settings, or route your web traffic through someone else.",
+    "howToTurnOff": {
+      "ios": "Open Settings > General > VPN & Device Management. If you see a profile you do not recognise, and it is not from your school or employer, tap it and choose Remove Management or Remove Profile. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
+      "android": "Open Settings > Security (or Security & privacy) > Device admin apps. Switch off any you do not recognise. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them."
+    },
+    "lastReviewed": "2026-10-01"
+  }
+]

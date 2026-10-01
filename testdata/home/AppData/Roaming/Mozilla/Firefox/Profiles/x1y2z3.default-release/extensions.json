@@ -1,0 +1,9 @@
+{"schemaVersion":36,"addons":[
+ {"id":"helper@example.com","version":"2.0","type":"extension","active":true,"location":"app-profile",
+  "defaultLocale":{"name":"Example Firefox Helper"},
+  "userPermissions":{"permissions":["tabs","cookies"],"origins":["<all_urls>"]}},
+ {"id":"off@example.com","version":"1.0","type":"extension","active":false,"location":"app-profile",
+  "defaultLocale":{"name":"Disabled Add-on"},"userPermissions":null},
+ {"id":"builtin@mozilla.org","version":"1.0","type":"extension","active":true,"location":"app-builtin","defaultLocale":{"name":"Built in"}},
+ {"id":"default-theme@mozilla.org","version":"1.0","type":"theme","active":true,"location":"app-profile","defaultLocale":{"name":"Theme"}}
+]}

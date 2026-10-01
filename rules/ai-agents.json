@@ -1,0 +1,165 @@
+[
+  {
+    "id": "chatgpt-atlas",
+    "name": "ChatGPT Atlas browser",
+    "vendor": "OpenAI",
+    "category": "ai-agent",
+    "match": {
+      "installedAppName": [
+        "^ChatGPT Atlas"
+      ],
+      "processName": [
+        "^chatgpt ?atlas\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "browser-data",
+      "input-control"
+    ],
+    "baseRisk": "high",
+    "summary": "A web browser with ChatGPT built in. In agent mode it can click, type and fill in forms on websites for you, using the sites you are logged in to.",
+    "howToTurnOff": {
+      "windows": "Open Atlas > Settings and switch off browser memories and agent access to logged-in sites if you do not use them. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "Open Atlas > Settings and switch off browser memories and agent access to logged-in sites if you do not use them. To remove it, quit it, then drag it from Applications to the Bin."
+    },
+    "links": [
+      "https://openai.com/"
+    ],
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "perplexity-comet",
+    "name": "Comet browser",
+    "vendor": "Perplexity AI",
+    "category": "ai-agent",
+    "match": {
+      "installedAppName": [
+        "^Comet$"
+      ],
+      "processName": [
+        "^comet\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "browser-data",
+      "input-control"
+    ],
+    "baseRisk": "high",
+    "summary": "A web browser with an AI assistant built in. The assistant can read the pages you visit and click, type and fill in forms for you.",
+    "howToTurnOff": {
+      "windows": "Open Comet > Settings to limit what the assistant can do. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "Open Comet > Settings to limit what the assistant can do. To remove it, quit it, then drag it from Applications to the Bin."
+    },
+    "links": [
+      "https://www.perplexity.ai/"
+    ],
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "dia-browser",
+    "name": "Dia browser",
+    "vendor": "The Browser Company",
+    "category": "ai-agent",
+    "match": {
+      "installedAppName": [
+        "^Dia$"
+      ],
+      "processName": [
+        "^dia\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "browser-data"
+    ],
+    "baseRisk": "medium",
+    "summary": "A web browser with an AI assistant that can read the tabs you have open to answer questions about them.",
+    "howToTurnOff": {
+      "windows": "To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "Open Dia > Settings to limit what the assistant can read. To remove it, quit it, then drag it from Applications to the Bin."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "open-interpreter",
+    "name": "Open Interpreter",
+    "vendor": "Open Interpreter",
+    "category": "ai-agent",
+    "match": {
+      "processName": [
+        "^interpreter(\\.exe)?$"
+      ]
+    },
+    "capabilities": [
+      "runs-commands",
+      "files",
+      "input-control"
+    ],
+    "baseRisk": "high",
+    "summary": "A free tool that lets an AI model run programs and commands on your computer, and read or change files, after you approve each step.",
+    "howToTurnOff": {
+      "windows": "Close the window it is running in. To remove it, open a command prompt and run: pip uninstall open-interpreter",
+      "mac": "Close the Terminal window it is running in. To remove it, open Terminal and run: pip uninstall open-interpreter"
+    },
+    "links": [
+      "https://github.com/openinterpreter/open-interpreter"
+    ],
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "screenpipe",
+    "name": "Screenpipe",
+    "vendor": "Mediar",
+    "category": "ai-agent",
+    "match": {
+      "installedAppName": [
+        "^screenpipe"
+      ],
+      "processName": [
+        "^screenpipe"
+      ]
+    },
+    "capabilities": [
+      "screen",
+      "microphone",
+      "background"
+    ],
+    "baseRisk": "high",
+    "summary": "Records your screen and microphone all the time so AI tools can search and use what you have seen and heard. Recordings are kept on your computer.",
+    "howToTurnOff": {
+      "windows": "Open Screenpipe and stop recording. To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "Open Screenpipe and stop recording. Then open System Settings > Privacy & Security and remove it from Screen & System Audio Recording and Microphone. To remove it, quit it, then drag it from Applications to the Bin."
+    },
+    "links": [
+      "https://github.com/mediar-ai/screenpipe"
+    ],
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "lm-studio",
+    "name": "LM Studio",
+    "vendor": "Element Labs",
+    "category": "ai-agent",
+    "match": {
+      "installedAppName": [
+        "^LM Studio"
+      ],
+      "processName": [
+        "^lm ?studio\\.exe$"
+      ],
+      "configTool": [
+        "lm-studio"
+      ]
+    },
+    "capabilities": [
+      "files",
+      "runs-commands"
+    ],
+    "baseRisk": "low",
+    "summary": "Runs AI models on your own computer. If tool connections (MCP servers) are added, the AI can use them to open files or run programs.",
+    "howToTurnOff": {
+      "windows": "Open LM Studio > Program > Edit mcp.json and remove servers you do not use. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "Open LM Studio > Program > Edit mcp.json and remove servers you do not use. To remove it, quit it, then drag it from Applications to the Bin."
+    },
+    "lastReviewed": "2026-10-01"
+  }
+]

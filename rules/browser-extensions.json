@@ -1,0 +1,243 @@
+[
+  {
+    "id": "grammarly",
+    "name": "Grammarly",
+    "vendor": "Grammarly",
+    "category": "ai-browser-extension",
+    "match": {
+      "extensionId": [
+        "kbfnbcaeplbcioakkpcpgfkobkghlhen"
+      ]
+    },
+    "capabilities": [
+      "browser-data"
+    ],
+    "baseRisk": "medium",
+    "summary": "A writing assistant. It reads the text you type on most websites to suggest corrections, and can use AI to rewrite it.",
+    "howToTurnOff": {
+      "windows": "In Chrome or Edge, type chrome://extensions (or edge://extensions) in the address bar, then switch the extension off or select Remove. In Firefox, open the menu > Add-ons and themes.",
+      "mac": "In Chrome, type chrome://extensions in the address bar, then switch the extension off or select Remove. In Safari, open Safari > Settings > Extensions."
+    },
+    "links": [
+      "https://www.grammarly.com/privacy-policy"
+    ],
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "monica",
+    "name": "Monica",
+    "vendor": "Monica",
+    "category": "ai-browser-extension",
+    "match": {
+      "extensionId": [
+        "ofpnmcalabcbjgholdjcjblkibolbppb"
+      ]
+    },
+    "capabilities": [
+      "browser-data"
+    ],
+    "baseRisk": "medium",
+    "summary": "An AI assistant in your browser. It can read the pages you visit to summarise or answer questions about them.",
+    "howToTurnOff": {
+      "windows": "In Chrome or Edge, type chrome://extensions (or edge://extensions) in the address bar, then switch the extension off or select Remove. In Firefox, open the menu > Add-ons and themes.",
+      "mac": "In Chrome, type chrome://extensions in the address bar, then switch the extension off or select Remove. In Safari, open Safari > Settings > Extensions."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "sider",
+    "name": "Sider",
+    "vendor": "Sider",
+    "category": "ai-browser-extension",
+    "match": {
+      "extensionId": [
+        "difoiogjjojoaoomphldepapgpbgkhkb"
+      ]
+    },
+    "capabilities": [
+      "browser-data"
+    ],
+    "baseRisk": "medium",
+    "summary": "An AI sidebar for your browser. It can read the pages you visit to summarise or answer questions about them.",
+    "howToTurnOff": {
+      "windows": "In Chrome or Edge, type chrome://extensions (or edge://extensions) in the address bar, then switch the extension off or select Remove. In Firefox, open the menu > Add-ons and themes.",
+      "mac": "In Chrome, type chrome://extensions in the address bar, then switch the extension off or select Remove. In Safari, open Safari > Settings > Extensions."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "maxai",
+    "name": "MaxAI",
+    "vendor": "MaxAI",
+    "category": "ai-browser-extension",
+    "match": {
+      "extensionId": [
+        "mhnlakgilnojmhinhkckjpncpbhabphi"
+      ]
+    },
+    "capabilities": [
+      "browser-data"
+    ],
+    "baseRisk": "medium",
+    "summary": "An AI assistant in your browser. It can read the pages and text you select to summarise, reply or rewrite.",
+    "howToTurnOff": {
+      "windows": "In Chrome or Edge, type chrome://extensions (or edge://extensions) in the address bar, then switch the extension off or select Remove. In Firefox, open the menu > Add-ons and themes.",
+      "mac": "In Chrome, type chrome://extensions in the address bar, then switch the extension off or select Remove. In Safari, open Safari > Settings > Extensions."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "merlin",
+    "name": "Merlin",
+    "vendor": "Foyer",
+    "category": "ai-browser-extension",
+    "match": {
+      "extensionId": [
+        "camppjleccjaphfdbohjdohecfnoikec"
+      ]
+    },
+    "capabilities": [
+      "browser-data"
+    ],
+    "baseRisk": "medium",
+    "summary": "An AI assistant in your browser. It can read the pages you visit to summarise or answer questions about them.",
+    "howToTurnOff": {
+      "windows": "In Chrome or Edge, type chrome://extensions (or edge://extensions) in the address bar, then switch the extension off or select Remove. In Firefox, open the menu > Add-ons and themes.",
+      "mac": "In Chrome, type chrome://extensions in the address bar, then switch the extension off or select Remove. In Safari, open Safari > Settings > Extensions."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "harpa-ai",
+    "name": "HARPA AI",
+    "vendor": "HARPA AI",
+    "category": "ai-browser-extension",
+    "match": {
+      "extensionId": [
+        "eanggfilgoajaocelnaflolkadkeghjp"
+      ]
+    },
+    "capabilities": [
+      "browser-data",
+      "input-control"
+    ],
+    "baseRisk": "high",
+    "summary": "An AI tool that can read web pages and automate actions on them, such as clicking and filling in forms for you.",
+    "howToTurnOff": {
+      "windows": "In Chrome or Edge, type chrome://extensions (or edge://extensions) in the address bar, then switch the extension off or select Remove. In Firefox, open the menu > Add-ons and themes.",
+      "mac": "In Chrome, type chrome://extensions in the address bar, then switch the extension off or select Remove. In Safari, open Safari > Settings > Extensions."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "claude-in-chrome",
+    "name": "Claude in Chrome",
+    "vendor": "Anthropic",
+    "category": "ai-browser-extension",
+    "match": {
+      "extensionId": [
+        "fcoeoabgfenejglbffodgkkbkcdhcgfn"
+      ]
+    },
+    "capabilities": [
+      "browser-data",
+      "input-control",
+      "screen"
+    ],
+    "baseRisk": "high",
+    "summary": "Anthropic's browser extension. When you ask it to, Claude can see the page, click, type and move between websites in your browser, including sites you are logged in to.",
+    "howToTurnOff": {
+      "windows": "In Chrome or Edge, type chrome://extensions (or edge://extensions) in the address bar, then switch the extension off or select Remove. In Firefox, open the menu > Add-ons and themes.",
+      "mac": "In Chrome, type chrome://extensions in the address bar, then switch the extension off or select Remove. In Safari, open Safari > Settings > Extensions."
+    },
+    "links": [
+      "https://www.anthropic.com/legal/privacy"
+    ],
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "perplexity-companion",
+    "name": "Perplexity - AI Companion",
+    "vendor": "Perplexity AI",
+    "category": "ai-browser-extension",
+    "match": {
+      "extensionId": [
+        "hlgbcneanomplepojfcnclggenpcoldo"
+      ]
+    },
+    "capabilities": [
+      "browser-data"
+    ],
+    "baseRisk": "low",
+    "summary": "An AI search extension. It can read the page you are on to answer questions about it.",
+    "howToTurnOff": {
+      "windows": "In Chrome or Edge, type chrome://extensions (or edge://extensions) in the address bar, then switch the extension off or select Remove. In Firefox, open the menu > Add-ons and themes.",
+      "mac": "In Chrome, type chrome://extensions in the address bar, then switch the extension off or select Remove. In Safari, open Safari > Settings > Extensions."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "tactiq",
+    "name": "Tactiq",
+    "vendor": "Tactiq",
+    "category": "ai-browser-extension",
+    "match": {
+      "extensionId": [
+        "fggkaccpbmombhnjkjokndojfgagejfb"
+      ]
+    },
+    "capabilities": [
+      "browser-data"
+    ],
+    "baseRisk": "medium",
+    "summary": "Writes down what is said in Google Meet, Zoom and Teams calls in your browser and uses AI to summarise it.",
+    "howToTurnOff": {
+      "windows": "In Chrome or Edge, type chrome://extensions (or edge://extensions) in the address bar, then switch the extension off or select Remove. In Firefox, open the menu > Add-ons and themes.",
+      "mac": "In Chrome, type chrome://extensions in the address bar, then switch the extension off or select Remove. In Safari, open Safari > Settings > Extensions."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "bardeen",
+    "name": "Bardeen",
+    "vendor": "Bardeen",
+    "category": "ai-browser-extension",
+    "match": {
+      "extensionId": [
+        "ihhkmalpkhkoedlmcnilbbhhbhnicjga"
+      ]
+    },
+    "capabilities": [
+      "browser-data",
+      "input-control"
+    ],
+    "baseRisk": "high",
+    "summary": "An AI automation tool. It can read web pages and act on them for you, such as copying data, clicking and filling in forms.",
+    "howToTurnOff": {
+      "windows": "In Chrome or Edge, type chrome://extensions (or edge://extensions) in the address bar, then switch the extension off or select Remove. In Firefox, open the menu > Add-ons and themes.",
+      "mac": "In Chrome, type chrome://extensions in the address bar, then switch the extension off or select Remove. In Safari, open Safari > Settings > Extensions."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "aiprm",
+    "name": "AIPRM for ChatGPT",
+    "vendor": "AIPRM",
+    "category": "ai-browser-extension",
+    "match": {
+      "extensionId": [
+        "ojnbohmppadfgpejeebfnmnknjdlckgj"
+      ]
+    },
+    "capabilities": [
+      "browser-data"
+    ],
+    "baseRisk": "low",
+    "summary": "Adds ready-made prompts to the ChatGPT website. It can read and change the ChatGPT page.",
+    "howToTurnOff": {
+      "windows": "In Chrome or Edge, type chrome://extensions (or edge://extensions) in the address bar, then switch the extension off or select Remove. In Firefox, open the menu > Add-ons and themes.",
+      "mac": "In Chrome, type chrome://extensions in the address bar, then switch the extension off or select Remove. In Safari, open Safari > Settings > Extensions."
+    },
+    "lastReviewed": "2026-10-01"
+  }
+]

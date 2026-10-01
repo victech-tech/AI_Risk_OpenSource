@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Vet
+        run: go vet ./...
+      - name: Vet (Windows build)
+        if: runner.os == 'Linux'
+        run: GOOS=windows GOARCH=amd64 go vet ./... && GOOS=windows GOARCH=arm64 go vet ./...
+      - name: Test
+        run: go test ./...
+
+  lint:
+    name: Lint (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: golangci/golangci-lint-action@v8
+        with:
+          version: latest
+
+  schemas:
+    name: Rules and report schema check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate rules against rules/rules.schema.json
+        run: |
+          files=$(ls rules/*.json | grep -v 'rules.schema.json' | sed 's/^/-d /')
+          npx -y ajv-cli@5 validate --spec=draft2020 --strict=false -s rules/rules.schema.json $files
+      - name: Validate example reports against schema/report.schema.json
+        run: npx -y -p ajv-cli@5 -p ajv-formats@3 ajv validate --spec=draft2020 --strict=false -c ajv-formats -s schema/report.schema.json -d "testdata/reports/*.json"

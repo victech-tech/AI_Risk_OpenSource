@@ -1,0 +1,252 @@
+[
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "vendor": "Anysphere",
+    "category": "ai-coding-tool",
+    "match": {
+      "installedAppName": [
+        "^Cursor"
+      ],
+      "processName": [
+        "^cursor\\.exe$"
+      ],
+      "configTool": [
+        "cursor"
+      ]
+    },
+    "capabilities": [
+      "files",
+      "runs-commands"
+    ],
+    "baseRisk": "medium",
+    "summary": "A code editor with AI built in. Its agent can read and change files in the folders you open, and run commands in the terminal.",
+    "howToTurnOff": {
+      "windows": "Open Cursor > Settings > Cursor Settings. Turn off auto-run for terminal commands and remove tool connections (MCP) you do not use. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "Open Cursor > Settings > Cursor Settings. Turn off auto-run for terminal commands and remove tool connections (MCP) you do not use. To remove it, quit it, then drag it from Applications to the Bin."
+    },
+    "links": [
+      "https://cursor.com/privacy"
+    ],
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "windsurf",
+    "name": "Windsurf",
+    "vendor": "Cognition",
+    "category": "ai-coding-tool",
+    "match": {
+      "installedAppName": [
+        "^Windsurf"
+      ],
+      "processName": [
+        "^windsurf\\.exe$"
+      ],
+      "extensionId": [
+        "codeium.codeium"
+      ],
+      "configTool": [
+        "windsurf"
+      ]
+    },
+    "capabilities": [
+      "files",
+      "runs-commands"
+    ],
+    "baseRisk": "medium",
+    "summary": "A code editor (and editor extension) with AI built in. Its agent can read and change files in the folders you open, and run commands.",
+    "howToTurnOff": {
+      "windows": "Open Windsurf Settings and turn off auto-execution of commands. Remove tool connections (MCP) you do not use. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "Open Windsurf Settings and turn off auto-execution of commands. Remove tool connections (MCP) you do not use. To remove it, quit it, then drag it from Applications to the Bin."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "claude-code",
+    "name": "Claude Code",
+    "vendor": "Anthropic",
+    "category": "ai-coding-tool",
+    "match": {
+      "extensionId": [
+        "anthropic.claude-code"
+      ],
+      "configTool": [
+        "claude-code"
+      ]
+    },
+    "capabilities": [
+      "files",
+      "runs-commands"
+    ],
+    "baseRisk": "medium",
+    "summary": "Anthropic's AI coding tool. It can read and change files in the folder it runs in and run commands, asking for permission unless you have allowed them in advance.",
+    "howToTurnOff": {
+      "windows": "In VS Code, Cursor or Windsurf, open the Extensions view (Ctrl+Shift+X), find the extension and select Disable or Uninstall. Remove saved permissions and tool connections with the /permissions and /mcp commands inside Claude Code.",
+      "mac": "In VS Code, Cursor or Windsurf, open the Extensions view (Cmd+Shift+X), find the extension and select Disable or Uninstall. Remove saved permissions and tool connections with the /permissions and /mcp commands inside Claude Code."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "github-copilot",
+    "name": "GitHub Copilot",
+    "vendor": "GitHub (Microsoft)",
+    "category": "ai-coding-tool",
+    "match": {
+      "extensionId": [
+        "github.copilot",
+        "github.copilot-chat"
+      ]
+    },
+    "capabilities": [
+      "files",
+      "runs-commands"
+    ],
+    "baseRisk": "medium",
+    "summary": "An AI coding assistant for code editors. It reads the code you are working on, and in agent mode it can change files and run commands after you approve them.",
+    "howToTurnOff": {
+      "windows": "In VS Code, Cursor or Windsurf, open the Extensions view (Ctrl+Shift+X), find the extension and select Disable or Uninstall.",
+      "mac": "In VS Code, Cursor or Windsurf, open the Extensions view (Cmd+Shift+X), find the extension and select Disable or Uninstall."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "cline",
+    "name": "Cline",
+    "vendor": "Cline Bot",
+    "category": "ai-coding-tool",
+    "match": {
+      "extensionId": [
+        "saoudrizwan.claude-dev"
+      ],
+      "configTool": [
+        "cline"
+      ]
+    },
+    "capabilities": [
+      "files",
+      "runs-commands"
+    ],
+    "baseRisk": "medium",
+    "summary": "An AI coding agent extension. It can read and change files and run commands. If auto-approve is switched on it does this without asking.",
+    "howToTurnOff": {
+      "windows": "In VS Code, Cursor or Windsurf, open the Extensions view (Ctrl+Shift+X), find the extension and select Disable or Uninstall. In Cline's settings, switch off auto-approve.",
+      "mac": "In VS Code, Cursor or Windsurf, open the Extensions view (Cmd+Shift+X), find the extension and select Disable or Uninstall. In Cline's settings, switch off auto-approve."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "roo-code",
+    "name": "Roo Code",
+    "vendor": "Roo Code",
+    "category": "ai-coding-tool",
+    "match": {
+      "extensionId": [
+        "rooveterinaryinc.roo-cline"
+      ]
+    },
+    "capabilities": [
+      "files",
+      "runs-commands"
+    ],
+    "baseRisk": "medium",
+    "summary": "An AI coding agent extension. It can read and change files and run commands. If auto-approve is switched on it does this without asking.",
+    "howToTurnOff": {
+      "windows": "In VS Code, Cursor or Windsurf, open the Extensions view (Ctrl+Shift+X), find the extension and select Disable or Uninstall. In Roo Code's settings, switch off auto-approve.",
+      "mac": "In VS Code, Cursor or Windsurf, open the Extensions view (Cmd+Shift+X), find the extension and select Disable or Uninstall. In Roo Code's settings, switch off auto-approve."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "continue",
+    "name": "Continue",
+    "vendor": "Continue",
+    "category": "ai-coding-tool",
+    "match": {
+      "extensionId": [
+        "continue.continue"
+      ]
+    },
+    "capabilities": [
+      "files"
+    ],
+    "baseRisk": "low",
+    "summary": "An open-source AI coding assistant extension. It reads the code you are working on and can suggest or make changes.",
+    "howToTurnOff": {
+      "windows": "In VS Code, Cursor or Windsurf, open the Extensions view (Ctrl+Shift+X), find the extension and select Disable or Uninstall.",
+      "mac": "In VS Code, Cursor or Windsurf, open the Extensions view (Cmd+Shift+X), find the extension and select Disable or Uninstall."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "openai-codex",
+    "name": "Codex",
+    "vendor": "OpenAI",
+    "category": "ai-coding-tool",
+    "match": {
+      "extensionId": [
+        "openai.chatgpt"
+      ],
+      "configTool": [
+        "codex-cli"
+      ]
+    },
+    "capabilities": [
+      "files",
+      "runs-commands"
+    ],
+    "baseRisk": "medium",
+    "summary": "OpenAI's coding agent, as an editor extension or a command-line tool. It can read and change files and run commands in the folder you give it.",
+    "howToTurnOff": {
+      "windows": "In VS Code, Cursor or Windsurf, open the Extensions view (Ctrl+Shift+X), find the extension and select Disable or Uninstall.",
+      "mac": "In VS Code, Cursor or Windsurf, open the Extensions view (Cmd+Shift+X), find the extension and select Disable or Uninstall."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "gemini-coding",
+    "name": "Gemini CLI and Gemini Code Assist",
+    "vendor": "Google",
+    "category": "ai-coding-tool",
+    "match": {
+      "extensionId": [
+        "google.geminicodeassist"
+      ],
+      "configTool": [
+        "gemini-cli"
+      ]
+    },
+    "capabilities": [
+      "files",
+      "runs-commands"
+    ],
+    "baseRisk": "medium",
+    "summary": "Google's AI coding tools. They can read and change files in your project and, in agent mode, run commands after you approve them.",
+    "howToTurnOff": {
+      "windows": "In VS Code, Cursor or Windsurf, open the Extensions view (Ctrl+Shift+X), find the extension and select Disable or Uninstall.",
+      "mac": "In VS Code, Cursor or Windsurf, open the Extensions view (Cmd+Shift+X), find the extension and select Disable or Uninstall."
+    },
+    "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "amazon-q",
+    "name": "Amazon Q Developer",
+    "vendor": "Amazon Web Services",
+    "category": "ai-coding-tool",
+    "match": {
+      "extensionId": [
+        "amazonwebservices.amazon-q-vscode"
+      ]
+    },
+    "capabilities": [
+      "files",
+      "runs-commands"
+    ],
+    "baseRisk": "medium",
+    "summary": "Amazon's AI coding assistant. It reads your code and, in agent mode, can change files and run commands.",
+    "howToTurnOff": {
+      "windows": "In VS Code, Cursor or Windsurf, open the Extensions view (Ctrl+Shift+X), find the extension and select Disable or Uninstall.",
+      "mac": "In VS Code, Cursor or Windsurf, open the Extensions view (Cmd+Shift+X), find the extension and select Disable or Uninstall."
+    },
+    "lastReviewed": "2026-10-01"
+  }
+]

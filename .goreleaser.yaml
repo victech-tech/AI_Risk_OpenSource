@@ -1,0 +1,45 @@
+# Builds the Windows scanner. Run by .github/workflows/release.yml on a v* tag.
+# Release the scanner rarely: every new file starts Windows SmartScreen
+# trust from zero. Rule changes never need a scanner release.
+version: 2
+project_name: ai-exposure-scanner
+
+builds:
+  - id: scanner
+    main: ./cmd/scanner
+    binary: ai-exposure-scanner
+    env:
+      - CGO_ENABLED=0
+    goos: [windows]
+    goarch: [amd64, arm64]
+    flags: [-trimpath]
+    ldflags:
+      - -s -w
+      - -X main.version={{ .Version }}
+      - -X main.reportURL={{ envOrDefault "REPORT_URL" "https://ai-exposure-check.pages.dev/report/" }}
+    mod_timestamp: "{{ .CommitTimestamp }}"
+
+archives:
+  # Plain .exe files with stable names, so the website can link to
+  # releases/latest/download/ai-exposure-scanner-windows-x64.exe
+  - formats: [binary]
+    name_template: >-
+      {{ .ProjectName }}-windows-{{ if eq .Arch "amd64" }}x64{{ else }}{{ .Arch }}{{ end }}
+
+checksum:
+  name_template: checksums.txt
+  algorithm: sha256
+
+release:
+  # Published by the workflow after signing (or straight away if signing is
+  # not set up yet), so people never download a half-finished release.
+  draft: true
+  replace_existing_draft: true
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^rules:"
+      - "^docs:"
+      - "^test:"

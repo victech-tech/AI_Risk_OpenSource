@@ -1,0 +1,57 @@
+name: Suggest a new AI tool
+description: Tell us about an app, extension or tool that the check does not recognise yet.
+title: "Suggest: "
+labels: ["rules", "new tool"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Please do **not** paste your whole report, and never include passwords, API keys or personal details.
+  - type: input
+    id: name
+    attributes:
+      label: Name of the app or extension
+      placeholder: Example AI Helper
+    validations:
+      required: true
+  - type: input
+    id: vendor
+    attributes:
+      label: Who makes it?
+      placeholder: Example Ltd
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of thing is it?
+      options:
+        - Desktop app
+        - Browser extension
+        - Code editor extension
+        - Phone app
+        - Command-line tool
+        - Not sure
+    validations:
+      required: true
+  - type: checkboxes
+    id: capabilities
+    attributes:
+      label: What can it do? (tick any you know of)
+      options:
+        - label: See your screen
+        - label: Control your mouse or keyboard
+        - label: Read or change your files
+        - label: Use your microphone or camera
+        - label: Read the websites you visit
+        - label: Let someone connect to your device remotely
+        - label: Run programs or commands
+        - label: Keep running in the background
+  - type: textarea
+    id: identifiers
+    attributes:
+      label: How it appears on your device (optional)
+      description: For example the name shown in Settings > Apps, the program name in Task Manager, or the extension id (the long string of letters in chrome://extensions).
+  - type: input
+    id: link
+    attributes:
+      label: Official website (optional)
+      placeholder: https://

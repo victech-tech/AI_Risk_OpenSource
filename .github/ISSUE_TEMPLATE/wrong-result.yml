@@ -1,0 +1,33 @@
+name: Report a wrong result
+description: The check showed something that is wrong, out of date or unclear.
+title: "Wrong result: "
+labels: ["rules", "wrong result"]
+body:
+  - type: markdown
+    attributes:
+      value: Please do **not** paste your whole report, and never include passwords, API keys or personal details.
+  - type: input
+    id: tool
+    attributes:
+      label: Which result was wrong?
+      placeholder: The name shown on the results page
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What was wrong?
+      options:
+        - It is not on my device
+        - The description of what it can do is wrong
+        - The risk level seems wrong
+        - The steps to turn it off do not work
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: More details
+    validations:
+      required: true

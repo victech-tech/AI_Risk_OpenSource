@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "scanner": { "name": "ai-exposure-scanner", "version": "0.1.0" },
+  "scannedAt": "2026-10-01T12:00:00Z",
+  "os": { "family": "windows", "version": "10.0.22631", "edition": "Professional", "arch": "amd64" },
+  "installedApps": [
+    { "name": "Claude", "publisher": "Anthropic PBC", "version": "0.14.0", "scope": "user" },
+    { "name": "AnyDesk", "publisher": "AnyDesk Software GmbH", "version": "9.0.1", "scope": "machine" },
+    { "name": "Cursor (User)", "publisher": "Anysphere", "version": "1.7.0", "scope": "user" },
+    { "name": "Google Chrome", "publisher": "Google LLC", "version": "140.0.7339.128", "scope": "machine" },
+    { "name": "Mystery Helper Tool", "publisher": "Unknown Ltd", "version": "1.0", "scope": "user" }
+  ],
+  "runningProcesses": [
+    { "name": "claude.exe", "path": "C:\\Users\\<user>\\AppData\\Local\\AnthropicClaude\\claude.exe" },
+    { "name": "explorer.exe", "path": "C:\\Windows\\explorer.exe" },
+    { "name": "svchost.exe" }
+  ],
+  "startupItems": [
+    { "name": "AnyDesk", "source": "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", "command": "AnyDesk.exe" },
+    { "name": "OneDrive", "source": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", "command": "OneDrive.exe" }
+  ],
+  "privacyPermissions": [
+    { "capability": "microphone", "app": "claude.exe", "allowed": true, "lastUsed": "2026-09-30T10:00:00Z" },
+    { "capability": "camera", "app": "Microsoft.WindowsCamera_8wekyb3d8bbwe", "allowed": true }
+  ],
+  "browserExtensions": [
+    { "browser": "chrome", "profile": "Default", "id": "kbfnbcaeplbcioakkpcpgfkobkghlhen", "name": "Grammarly", "version": "14.1200.0",
+      "permissions": ["<all_urls>", "cookies", "storage", "tabs"] },
+    { "browser": "chrome", "profile": "Default", "id": "fcoeoabgfenejglbffodgkkbkcdhcgfn", "name": "Claude", "version": "1.0.20",
+      "permissions": ["<all_urls>", "debugger", "scripting", "tabs"] },
+    { "browser": "chrome", "profile": "Default", "id": "aaaabbbbccccddddeeeeffffgggghhhh", "name": "Unknown Page Helper", "version": "0.3",
+      "permissions": ["storage"] },
+    { "browser": "firefox", "profile": "default-release", "id": "uBlock0@raymondhill.net", "name": "uBlock Origin", "version": "1.66.0",
+      "permissions": ["<all_urls>", "storage"], "enabled": true },
+    { "browser": "vscode", "id": "github.copilot", "name": "GitHub Copilot", "version": "1.250.0", "permissions": [] }
+  ],
+  "aiToolConfigs": [
+    { "tool": "claude-desktop", "path": "%APPDATA%\\Claude\\claude_desktop_config.json",
+      "mcpServers": [ { "name": "filesystem", "command": "npx" }, { "name": "github", "command": "node.exe" }, { "name": "puppeteer", "command": "npx" } ] },
+    { "tool": "cursor", "path": "%USERPROFILE%\\.cursor\\mcp.json", "mcpServers": [] }
+  ],
+  "errors": [
+    { "section": "privacyPermissions", "message": "screen capture settings not found on this version of Windows" }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "C:\\Users\\FAKEUSER\\Documents"]
+    },
+    "github": {
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": ["server.js", "--token", "ghp_FAKESECRET0000000000000000000000"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_FAKESECRET1111111111111111111111" }
+    },
+    "remote-api": {
+      "url": "https://mcp.example.com/sse?api_key=sk-FAKESECRET-2222",
+      "headers": { "Authorization": "Bearer FAKESECRET-3333" }
+    }
+  },
+  "globalShortcut": "Ctrl+Space"
+}

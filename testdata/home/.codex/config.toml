@@ -1,0 +1,12 @@
+model = "gpt-5"
+api_key = "sk-FAKESECRET-8888"
+
+[mcp_servers.shell]
+command = "C:\\tools\\shell-mcp.exe"
+args = ["--allow-all", "FAKESECRET-9999"]
+
+[mcp_servers.shell.env]
+TOKEN = "FAKESECRET-AAAA"
+
+[mcp_servers."docs-server"]
+url = "https://docs.example.com/mcp?token=FAKESECRET-BBBB"

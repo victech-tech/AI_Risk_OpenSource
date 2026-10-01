@@ -1,0 +1,103 @@
+name: Release scanner
+
+# Runs on a v* tag. Builds the .exe files with GoReleaser, writes
+# checksums.txt, records build attestations (proof of which source and
+# workflow built each file), and, once SignPath is set up, sends the files
+# for signing. A maintainer approves each signing request in SignPath.
+#
+# Signing secrets/variables (add after SignPath Foundation approval):
+#   secret   SIGNPATH_API_TOKEN
+#   variable SIGNPATH_ORGANIZATION_ID
+#   variable SIGNPATH_PROJECT_SLUG          (for example ai-exposure-scanner)
+#   variable SIGNPATH_SIGNING_POLICY_SLUG   (for example release-signing)
+# Until then, unsigned files are published with checksums and attestations.
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      SIGNING_ENABLED: ${{ secrets.SIGNPATH_API_TOKEN != '' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Test before building
+        run: go test ./...
+
+      - name: Build with GoReleaser (draft release)
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          distribution: goreleaser
+          version: "~> v2"
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPORT_URL: ${{ vars.REPORT_URL }}
+
+      - name: Collect the .exe files under their release names
+        run: |
+          mkdir out
+          cp dist/scanner_windows_amd64_*/ai-exposure-scanner.exe out/ai-exposure-scanner-windows-x64.exe
+          cp dist/scanner_windows_arm64_*/ai-exposure-scanner.exe out/ai-exposure-scanner-windows-arm64.exe
+          (cd out && sha256sum -c ../dist/checksums.txt)
+
+      - name: Attest the unsigned files
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: "out/*.exe"
+
+      # ----- Signing (skipped until SignPath is set up) -----
+      - name: Upload unsigned files for signing
+        if: env.SIGNING_ENABLED == 'true'
+        id: unsigned
+        uses: actions/upload-artifact@v4
+        with:
+          name: unsigned
+          path: out/*.exe
+          if-no-files-found: error
+
+      - name: Sign with SignPath
+        if: env.SIGNING_ENABLED == 'true'
+        uses: signpath/github-action-submit-signing-request@v1
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: ${{ vars.SIGNPATH_SIGNING_POLICY_SLUG }}
+          github-artifact-id: ${{ steps.unsigned.outputs.artifact-id }}
+          wait-for-completion: true
+          wait-for-completion-timeout-in-seconds: 86400
+          output-artifact-directory: signed
+
+      - name: Attest the signed files
+        if: env.SIGNING_ENABLED == 'true'
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: "signed/*.exe"
+
+      - name: Replace files in the release with signed ones
+        if: env.SIGNING_ENABLED == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd signed
+          sha256sum *.exe > checksums.txt
+          gh release upload "$GITHUB_REF_NAME" *.exe checksums.txt --clobber --repo "$GITHUB_REPOSITORY"
+
+      # ----- Publish -----
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release edit "$GITHUB_REF_NAME" --draft=false --latest --repo "$GITHUB_REPOSITORY"
