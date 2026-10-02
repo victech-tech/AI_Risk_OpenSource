@@ -92,3 +92,9 @@ jobs:
           $bad = $names | Where-Object { $_ -notmatch $allowed }
           if ($bad) { throw "Unexpected files in package: $bad" }
           if (-not (Test-Path out/store/ai-exposure-scanner-0.0.1.msixbundle)) { throw 'Store bundle missing' }
+      # For trying the package on a Windows 11 PC (see the website repo's docs/SETUP.md, step 6).
+      - uses: actions/upload-artifact@v4
+        with:
+          name: msix-test
+          path: out/test/*.msix
+          retention-days: 30
