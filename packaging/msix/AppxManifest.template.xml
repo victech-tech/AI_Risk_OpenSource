@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Microsoft Store package (MSIX) for the scanner. build.ps1 fills in the
-  {{...}} values. The package holds only ai-exposure-scanner.exe and icons:
+  Microsoft Store package (MSIX) for the scanner. build.ps1 fills in the double-brace placeholders. The package holds only ai-exposure-scanner.exe and icons:
   the same read-only program as the direct download, with no network access
   and nothing added. runFullTrust is required for any normal desktop program.
 -->
