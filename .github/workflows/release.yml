@@ -88,7 +88,7 @@ jobs:
       - name: Upload unsigned files for signing
         if: env.SIGNING_ENABLED == 'true'
         id: unsigned
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: unsigned
           path: out/*.exe
@@ -144,7 +144,7 @@ jobs:
       - name: Build test packages
         shell: pwsh
         run: ./packaging/msix/build.ps1 -Kind test -Version $env:TAG -ExeX64 dist/ai-exposure-scanner-windows-x64.exe -ExeArm64 dist/ai-exposure-scanner-windows-arm64.exe -OutDir out/test
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: msix-test
           path: out/test/*.msix
@@ -153,7 +153,7 @@ jobs:
         if: vars.MSIX_IDENTITY_NAME != '' && vars.MSIX_PUBLISHER != '' && vars.MSIX_PUBLISHER_DISPLAY_NAME != ''
         shell: pwsh
         run: ./packaging/msix/build.ps1 -Kind store -Version $env:TAG -ExeX64 dist/ai-exposure-scanner-windows-x64.exe -ExeArm64 dist/ai-exposure-scanner-windows-arm64.exe -OutDir out/store -IdentityName '${{ vars.MSIX_IDENTITY_NAME }}' -Publisher '${{ vars.MSIX_PUBLISHER }}' -PublisherDisplayName '${{ vars.MSIX_PUBLISHER_DISPLAY_NAME }}'
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: vars.MSIX_IDENTITY_NAME != '' && vars.MSIX_PUBLISHER != '' && vars.MSIX_PUBLISHER_DISPLAY_NAME != ''
         with:
           name: msix-store
