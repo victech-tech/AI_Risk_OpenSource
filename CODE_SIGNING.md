@@ -1,23 +1,28 @@
 # Code signing policy
 
-Free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by [SignPath Foundation](https://signpath.org/).
-
 ## Status
 
-The application to SignPath Foundation has not been approved yet. Until it is, releases are **unsigned** and come with `checksums.txt` and GitHub build attestations so you can check them (see the README). This page will be updated when signing starts.
+Releases are currently **unsigned**. Every release comes with:
 
-## What gets signed
+- `checksums.txt`, so you can check the file you downloaded is exactly the one we published (see "Check your download" in the README);
+- GitHub build attestations, which prove which source code and which GitHub workflow built each file.
 
-Only `ai-exposure-scanner-windows-x64.exe` and `ai-exposure-scanner-windows-arm64.exe`, built from this repository by `.github/workflows/release.yml` on GitHub Actions. Nothing built anywhere else is ever signed.
+Because the files are unsigned, Windows SmartScreen (a download safety check) may warn you the first time you run a new version. The README explains how to check the file before choosing **More info** > **Run anyway**. Please never switch SmartScreen off.
+
+An application to the SignPath Foundation free signing programme was declined in October 2026, because the project is new and not yet widely known. We plan to apply again once it is, and we are considering other signing options. This page will say clearly when signing starts and who signs the files.
+
+## What gets signed (once signing starts)
+
+Only `ai-exposure-scanner-windows-x64.exe` and `ai-exposure-scanner-windows-arm64.exe`, built from this repository by `.github/workflows/release.yml` on GitHub Actions from a tagged commit on `main`. Nothing built anywhere else will ever be signed.
 
 ## Who is involved
 
 | Role | Who |
 |---|---|
-| Committers and reviewers | Members of the [victech-tech](https://github.com/victech-tech) organisation with write access to this repository |
-| Approvers (approve each signing request in SignPath) | Yan (project owner) |
+| Committers and reviewers | Members of the [victech-tech](https://github.com/victech-tech) account with write access to this repository |
+| Release approver | Yan (project owner) |
 
-All changes go through pull requests on a protected `main` branch. Approvers check that each release was built from a tagged commit on `main` by the release workflow.
+All changes go through pull requests on a protected `main` branch.
 
 ## Privacy
 

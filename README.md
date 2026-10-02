@@ -35,7 +35,7 @@ Releases also have **build attestations**, which prove which source code and whi
 gh attestation verify ai-exposure-scanner-windows-x64.exe --repo victech-tech/AI_Risk_OpenSource
 ```
 
-Signed releases are signed through SignPath Foundation. See [CODE_SIGNING.md](CODE_SIGNING.md).
+Releases are not code-signed yet; [CODE_SIGNING.md](CODE_SIGNING.md) explains why and what is planned.
 
 ## What the scanner reads
 
@@ -112,10 +112,10 @@ Rules are JSON files in `rules/`, one file per category. See [CONTRIBUTING.md](C
 
 ### Releases
 
-Pushing a `v*` tag runs `.github/workflows/release.yml`: GoReleaser builds the `.exe` files, writes `checksums.txt`, creates build attestations and (once set up) sends the files to SignPath for signing, which a maintainer approves.
+Pushing a `v*` tag runs `.github/workflows/release.yml`: GoReleaser builds the `.exe` files, writes `checksums.txt`, creates build attestations and publishes the release. The workflow also contains an optional SignPath signing step, which stays switched off unless SignPath secrets are added.
 
 ## Licence
 
-[Apache-2.0](LICENSE). Free code signing provided by SignPath.io, certificate by SignPath Foundation (see [CODE_SIGNING.md](CODE_SIGNING.md)).
+[Apache-2.0](LICENSE). Code signing: see [CODE_SIGNING.md](CODE_SIGNING.md).
 
 See also: [PRIVACY.md](PRIVACY.md) · [SECURITY.md](SECURITY.md) · [CONTRIBUTING.md](CONTRIBUTING.md) · [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)

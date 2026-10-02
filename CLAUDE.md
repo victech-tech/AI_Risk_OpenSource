@@ -21,7 +21,7 @@ Any new function, bug fix or behaviour change here must also be recorded in the 
 - Read only the locations in the README table; update the table in the same change as any new location.
 - Never change, delete or install anything on the user's device.
 - Dependencies: standard library and `golang.org/x/sys` only.
-- **No proprietary code in this repo** (SignPath Foundation condition).
+- **No proprietary code in this repo** (keeps free open-source signing programmes such as SignPath Foundation and Certum Open Source open to us).
 - The scanner collects facts only; it never judges risk.
 - Rule changes never trigger a scanner release. Release rarely.
 
