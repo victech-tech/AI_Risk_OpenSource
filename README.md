@@ -17,6 +17,10 @@ A free, open-source Windows program that lists which AI tools, remote access too
 4. When it finishes, the report is saved in your **Downloads** folder as `ai-exposure-report-YYYYMMDD-HHMM.json`. You can open it in Notepad to see exactly what it contains.
 5. Your browser opens the report page. Drag the file onto the page to see your results.
 
+### Microsoft Store version (coming soon)
+
+A Microsoft Store version is being prepared. It is the same program, but Microsoft checks and signs it, so Windows shows no warning when you install it. Until it is listed, use the download above.
+
 ### If Windows shows a warning
 
 New programs from small publishers often show a blue "Windows protected your PC" message (from Microsoft SmartScreen, a download safety check). Choose **More info**, check the publisher, then **Run anyway** only if you have [checked the download](#check-your-download). Please never switch SmartScreen off.
@@ -113,6 +117,15 @@ Rules are JSON files in `rules/`, one file per category. See [CONTRIBUTING.md](C
 ### Releases
 
 Pushing a `v*` tag runs `.github/workflows/release.yml`: GoReleaser builds the `.exe` files, writes `checksums.txt`, creates build attestations and publishes the release. The workflow also contains an optional SignPath signing step, which stays switched off unless SignPath secrets are added.
+
+### Microsoft Store package
+
+`packaging/msix/` holds the Store package manifest, icons and `build.ps1`, which wraps the released `.exe` in an MSIX package (the Windows app package format). The package contains only the scanner and its icons. On each release, the **Store packages (MSIX)** job in `release.yml` builds:
+
+- `msix-test`: unsigned test packages that install on Windows 11 for checking before submission;
+- `msix-store`: the bundle to upload in Partner Center (Microsoft's dashboard for Store publishers). It is built only when the repository variables `MSIX_IDENTITY_NAME`, `MSIX_PUBLISHER` and `MSIX_PUBLISHER_DISPLAY_NAME` are set.
+
+CI builds both package types on every change.
 
 ## Licence
 

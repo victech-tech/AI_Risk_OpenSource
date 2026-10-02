@@ -36,6 +36,7 @@ internal/policy/    no-network tests
 rules/              rules JSON + rules_test.go
 schema/             report.schema.json
 testdata/           fixtures (fake secrets live here)
+packaging/msix/     Microsoft Store package: manifest template, icons, build.ps1
 ```
 
 ## Commands

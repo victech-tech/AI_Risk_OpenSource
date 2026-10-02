@@ -12,6 +12,13 @@ name: Release scanner
 #   variable SIGNPATH_PROJECT_SLUG          (for example ai-exposure-scanner)
 #   variable SIGNPATH_SIGNING_POLICY_SLUG   (for example release-signing)
 # Until then, unsigned files are published with checksums and attestations.
+#
+# Microsoft Store packages (job "msix" below) are built from the released
+# .exe files and kept as workflow artifacts (not release files):
+#   msix-test   unsigned test packages for trying on your own PC
+#   msix-store  the .msixbundle to upload in Partner Center (built only when
+#               the repository variables MSIX_IDENTITY_NAME, MSIX_PUBLISHER
+#               and MSIX_PUBLISHER_DISPLAY_NAME are set)
 
 on:
   push:
@@ -120,3 +127,35 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh release edit "$TAG" --draft=false --latest --repo "$GITHUB_REPOSITORY"
+
+  msix:
+    name: Store packages (MSIX)
+    needs: release
+    runs-on: windows-latest
+    timeout-minutes: 20
+    env:
+      TAG: ${{ inputs.version || github.ref_name }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download the released .exe files
+        shell: pwsh
+        run: gh release download $env:TAG --repo $env:GITHUB_REPOSITORY --pattern "*.exe" --dir dist
+      - name: Build test packages
+        shell: pwsh
+        run: ./packaging/msix/build.ps1 -Kind test -Version $env:TAG -ExeX64 dist/ai-exposure-scanner-windows-x64.exe -ExeArm64 dist/ai-exposure-scanner-windows-arm64.exe -OutDir out/test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: msix-test
+          path: out/test/*.msix
+          if-no-files-found: error
+      - name: Build the Store bundle
+        if: vars.MSIX_IDENTITY_NAME != '' && vars.MSIX_PUBLISHER != '' && vars.MSIX_PUBLISHER_DISPLAY_NAME != ''
+        shell: pwsh
+        run: ./packaging/msix/build.ps1 -Kind store -Version $env:TAG -ExeX64 dist/ai-exposure-scanner-windows-x64.exe -ExeArm64 dist/ai-exposure-scanner-windows-arm64.exe -OutDir out/store -IdentityName '${{ vars.MSIX_IDENTITY_NAME }}' -Publisher '${{ vars.MSIX_PUBLISHER }}' -PublisherDisplayName '${{ vars.MSIX_PUBLISHER_DISPLAY_NAME }}'
+      - uses: actions/upload-artifact@v4
+        if: vars.MSIX_IDENTITY_NAME != '' && vars.MSIX_PUBLISHER != '' && vars.MSIX_PUBLISHER_DISPLAY_NAME != ''
+        with:
+          name: msix-store
+          path: out/store/*.msixbundle
+          if-no-files-found: error
