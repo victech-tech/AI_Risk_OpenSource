@@ -58,3 +58,37 @@ jobs:
           npx -y ajv-cli@5 validate --spec=draft2020 --strict=false -s rules/rules.schema.json $files
       - name: Validate example reports against schema/report.schema.json
         run: npx -y -p ajv-cli@5 -p ajv-formats@3 ajv validate --spec=draft2020 --strict=false -c ajv-formats -s schema/report.schema.json -d "testdata/reports/*.json"
+
+  msix:
+    name: Store package (MSIX)
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Build the scanner for x64 and arm64
+        shell: pwsh
+        run: |
+          $env:CGO_ENABLED = '0'; $env:GOOS = 'windows'
+          $env:GOARCH = 'amd64'; go build -trimpath -o dist/x64.exe ./cmd/scanner
+          $env:GOARCH = 'arm64'; go build -trimpath -o dist/arm64.exe ./cmd/scanner
+      - name: Build test packages
+        shell: pwsh
+        run: ./packaging/msix/build.ps1 -Kind test -Version 0.0.1 -ExeX64 dist/x64.exe -ExeArm64 dist/arm64.exe -OutDir out/test
+      # Placeholder identity: checks the Store bundle builds; real values come from Partner Center.
+      - name: Build a Store bundle
+        shell: pwsh
+        run: ./packaging/msix/build.ps1 -Kind store -Version 0.0.1 -ExeX64 dist/x64.exe -ExeArm64 dist/arm64.exe -OutDir out/store -IdentityName 'Example.AIExposureScanner' -Publisher 'CN=00000000-0000-0000-0000-000000000000' -PublisherDisplayName 'Example'
+      - name: Check the packages contain the scanner and nothing unexpected
+        shell: pwsh
+        run: |
+          Add-Type -AssemblyName System.IO.Compression.FileSystem
+          $zip = [IO.Compression.ZipFile]::OpenRead((Resolve-Path out/test/ai-exposure-scanner-test-x64.msix))
+          $names = $zip.Entries.FullName; $zip.Dispose()
+          $names | ForEach-Object { Write-Host $_ }
+          $allowed = '^(ai-exposure-scanner\.exe|AppxManifest\.xml|AppxBlockMap\.xml|\[Content_Types\]\.xml|AppxSignature\.p7x|AppxMetadata/.*|Assets/.*\.png)$'
+          $bad = $names | Where-Object { $_ -notmatch $allowed }
+          if ($bad) { throw "Unexpected files in package: $bad" }
+          if (-not (Test-Path out/store/ai-exposure-scanner-0.0.1.msixbundle)) { throw 'Store bundle missing' }
