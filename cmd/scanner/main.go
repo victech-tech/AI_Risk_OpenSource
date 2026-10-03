@@ -83,18 +83,10 @@ func run(args []string, stdin io.Reader, stdout io.Writer) int {
 		return 1
 	}
 
-	fmt.Fprintln(stdout)
-	fmt.Fprintln(stdout, "Done. Your report is saved here:")
-	fmt.Fprintf(stdout, "  %s\n\n", outPath)
-	fmt.Fprintln(stdout, "You can open it in Notepad to see exactly what it contains.")
+	printFinish(stdout, outPath, !opts.noBrowser)
 	if !opts.noBrowser {
-		fmt.Fprintln(stdout, "Your browser will now open the report page. Drag this file onto the page:")
-		fmt.Fprintf(stdout, "  %s\n", outPath)
-		fmt.Fprintf(stdout, "(The page is %s - the file is read inside your browser and is not uploaded.)\n", reportURL)
 		openBrowser(reportURL)
 		showInFolder(outPath)
-	} else {
-		fmt.Fprintf(stdout, "To see your results, go to %s and drag the file onto the page.\n", reportURL)
 	}
 	waitForEnter(stdout, in, opts)
 	return 0
@@ -124,6 +116,38 @@ The report will be saved here:
   %s
 
 `, version, outPath)
+}
+
+// printFinish tells people where their results are. The scanner itself
+// never judges risk (the website does), so this screen must make the next
+// step impossible to miss.
+func printFinish(w io.Writer, outPath string, browser bool) {
+	line := strings.Repeat("=", 64)
+	fmt.Fprintf(w, "\n%s\n Scan finished. Your report is ready.\n%s\n\n", line, line)
+	if browser {
+		fmt.Fprintln(w, "Your results are on the AI Exposure Check report page, which is")
+		fmt.Fprintln(w, "opening in your browser now.")
+	} else {
+		fmt.Fprintln(w, "Your results are on the AI Exposure Check report page:")
+		fmt.Fprintf(w, "  %s\n", reportURL)
+	}
+	fmt.Fprintln(w)
+	fmt.Fprintln(w, "  NEXT STEP: drag your report file onto that page.")
+	fmt.Fprintln(w)
+	fmt.Fprintf(w, "  Your report file: %s\n", outPath)
+	if browser {
+		fmt.Fprintln(w, "  (File Explorer is open with the file selected.)")
+	}
+	fmt.Fprintln(w)
+	fmt.Fprintln(w, "The page will show you:")
+	fmt.Fprintln(w, "  - which AI tools can see or control this PC")
+	fmt.Fprintln(w, "  - how to switch each one off")
+	fmt.Fprintln(w)
+	fmt.Fprintln(w, "The file is read inside your browser. It is not uploaded.")
+	fmt.Fprintln(w, "You can also open the file in Notepad to see exactly what it contains.")
+	if browser {
+		fmt.Fprintf(w, "If the page did not open, go to: %s\n", reportURL)
+	}
 }
 
 func scan(w io.Writer, now time.Time) *report.Report {
