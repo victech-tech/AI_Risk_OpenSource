@@ -239,5 +239,27 @@
       "mac": "In Chrome, type chrome://extensions in the address bar, then switch the extension off or select Remove. In Safari, open Safari > Settings > Extensions."
     },
     "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "supademo",
+    "name": "Supademo",
+    "vendor": "Supademo",
+    "category": "ai-browser-extension",
+    "match": {
+      "extensionId": [
+        "jblbcpkejogbghfdglhfjlplchcnmohm"
+      ]
+    },
+    "capabilities": [
+      "browser-data",
+      "screen"
+    ],
+    "baseRisk": "medium",
+    "summary": "An AI tool for making product demos. It can read every website you visit and record what is shown in your browser tabs.",
+    "howToTurnOff": {
+      "windows": "In Chrome or Edge, type chrome://extensions (or edge://extensions) in the address bar, then switch the extension off or select Remove. In Firefox, open the menu > Add-ons and themes.",
+      "mac": "In Chrome, type chrome://extensions in the address bar, then switch the extension off or select Remove. In Safari, open Safari > Settings > Extensions."
+    },
+    "lastReviewed": "2026-10-03"
   }
 ]

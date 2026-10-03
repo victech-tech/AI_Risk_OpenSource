@@ -187,5 +187,112 @@
       "mac": "Open System Settings > Apple Intelligence & Siri. Switch off Listen for and anything else you do not use."
     },
     "lastReviewed": "2026-10-01"
+  },
+  {
+    "id": "microsoft-365-copilot",
+    "name": "Microsoft 365 Copilot app",
+    "vendor": "Microsoft",
+    "category": "ai-assistant",
+    "match": {
+      "installedAppName": [
+        "^Microsoft 365 Copilot"
+      ],
+      "processName": [
+        "^m365copilot\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "files",
+      "microphone"
+    ],
+    "baseRisk": "medium",
+    "summary": "Microsoft's Copilot app for Microsoft 365. When you are signed in, it can read your documents, emails and chats in Microsoft 365 to answer questions, and it listens in voice mode.",
+    "howToTurnOff": {
+      "windows": "To stop it starting with Windows, open Settings > Apps > Startup and switch Microsoft 365 Copilot off. To remove it, open Settings > Apps > Installed apps, find Microsoft 365 Copilot, select the three dots and choose Uninstall. Word, Excel and Outlook keep working.",
+      "ios": "Open Settings > Apps > Microsoft 365 Copilot and switch off Microphone, Camera and Photos if you do not use them.",
+      "android": "Open Settings > Apps > Microsoft 365 Copilot > Permissions and switch off anything you do not use."
+    },
+    "links": [
+      "https://privacy.microsoft.com/"
+    ],
+    "lastReviewed": "2026-10-03"
+  },
+  {
+    "id": "opera-ai",
+    "name": "Opera browser (Aria AI)",
+    "vendor": "Opera",
+    "category": "ai-assistant",
+    "match": {
+      "installedAppName": [
+        "^Opera (Stable|GX|One|Air)"
+      ],
+      "processName": [
+        "^opera\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "browser-data"
+    ],
+    "baseRisk": "low",
+    "summary": "A web browser with an AI assistant called Aria built in. When you use the assistant, it can read the page you are on.",
+    "howToTurnOff": {
+      "windows": "In Opera, open Settings (Alt+P), search for \"Aria\" and switch off the AI features you do not use. To stop Opera starting with Windows, open Settings > Apps > Startup and switch Opera off. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "In Opera, open Settings, search for \"Aria\" and switch off the AI features you do not use."
+    },
+    "links": [
+      "https://www.opera.com/privacy"
+    ],
+    "lastReviewed": "2026-10-03"
+  },
+  {
+    "id": "ollama",
+    "name": "Ollama",
+    "vendor": "Ollama",
+    "category": "ai-assistant",
+    "match": {
+      "installedAppName": [
+        "^Ollama"
+      ],
+      "processName": [
+        "^ollama( app)?\\.exe$"
+      ]
+    },
+    "capabilities": [
+      "background"
+    ],
+    "baseRisk": "low",
+    "summary": "Runs AI models on your own computer. It does not watch what you do, but it keeps a local service running that other programs on this computer can use.",
+    "howToTurnOff": {
+      "windows": "Right-click the Ollama icon near the clock and choose Quit. To stop it starting with Windows, open Settings > Apps > Startup and switch Ollama off. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "Click the Ollama icon in the menu bar and choose Quit. To stop it starting automatically, open System Settings > General > Login Items and remove Ollama."
+    },
+    "links": [
+      "https://github.com/ollama/ollama"
+    ],
+    "lastReviewed": "2026-10-03"
+  },
+  {
+    "id": "comfyui",
+    "name": "ComfyUI",
+    "vendor": "Comfy Org",
+    "category": "ai-assistant",
+    "match": {
+      "installedAppName": [
+        "^ComfyUI"
+      ]
+    },
+    "capabilities": [
+      "files"
+    ],
+    "baseRisk": "low",
+    "summary": "Creates images and video with AI models on your own computer. It reads and saves files in its own folders, and add-ons you install can run their own code.",
+    "howToTurnOff": {
+      "windows": "Close ComfyUI when you are not using it, and only install add-ons (custom nodes) from people you trust. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "mac": "Quit ComfyUI when you are not using it, and only install add-ons (custom nodes) from people you trust."
+    },
+    "links": [
+      "https://www.comfy.org/"
+    ],
+    "lastReviewed": "2026-10-03"
   }
 ]

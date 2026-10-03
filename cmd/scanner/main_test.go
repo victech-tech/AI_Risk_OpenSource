@@ -54,6 +54,11 @@ func TestYesWritesReport(t *testing.T) {
 	if code := run([]string{"--yes", "--out", dir, "--no-browser"}, strings.NewReader(""), &out); code != 0 {
 		t.Fatalf("exit %d: %s", code, out.String())
 	}
+	for _, want := range []string{"Scan finished", "NEXT STEP: drag your report file onto that page", "which AI tools can see or control this PC", "how to switch each one off", reportURL} {
+		if !strings.Contains(out.String(), want) {
+			t.Errorf("finish screen missing %q", want)
+		}
+	}
 	entries, _ := os.ReadDir(dir)
 	if len(entries) != 1 || !strings.HasPrefix(entries[0].Name(), "ai-exposure-report-") {
 		t.Fatalf("expected one report file, got %v", entries)

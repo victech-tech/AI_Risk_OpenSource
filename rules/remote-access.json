@@ -104,6 +104,9 @@
       ],
       "processName": [
         "^remoting_host\\.exe$"
+      ],
+      "extensionId": [
+        "inomeogfingihgjfjlpeplalcfajhgai"
       ]
     },
     "capabilities": [
@@ -113,12 +116,12 @@
       "background"
     ],
     "baseRisk": "high",
-    "summary": "Lets someone connect to this computer from another device to see the screen and use it. It works whenever the computer is on.",
+    "summary": "Lets someone connect to this computer from another device to see the screen and use it. It works whenever the computer is on. The browser extension of the same name sets it up.",
     "howToTurnOff": {
       "windows": "Visit remotedesktop.google.com/access and delete this computer from the list. Then uninstall Chrome Remote Desktop Host from Settings > Apps > Installed apps.",
       "mac": "Visit remotedesktop.google.com/access and delete this computer from the list, then remove the Chrome Remote Desktop host."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-03"
   },
   {
     "id": "screenconnect",
