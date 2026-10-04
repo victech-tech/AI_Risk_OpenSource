@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingTop="40dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="40dp">
+
+        <!-- Part 1: what the check does. Nothing runs until Start is tapped. -->
+        <LinearLayout
+            android:id="@+id/intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView style="@style/Eyebrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eyebrow" />
+            <TextView style="@style/Heading" android:layout_width="match_parent" android:layout_height="wrap_content" android:accessibilityHeading="true" android:text="@string/title" />
+            <TextView style="@style/Body" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/intro" />
+
+            <TextView style="@style/Subheading" android:layout_width="match_parent" android:layout_height="wrap_content" android:accessibilityHeading="true" android:text="@string/reads_title" />
+            <TextView style="@style/Body" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/reads" />
+
+            <TextView style="@style/Subheading" android:layout_width="match_parent" android:layout_height="wrap_content" android:accessibilityHeading="true" android:text="@string/never_title" />
+            <TextView style="@style/Body" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/never" />
+
+            <TextView style="@style/Subheading" android:layout_width="match_parent" android:layout_height="wrap_content" android:accessibilityHeading="true" android:text="@string/where_title" />
+            <TextView style="@style/Body" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/where" />
+
+            <Button android:id="@+id/start" style="@style/PrimaryButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="@string/start" />
+        </LinearLayout>
+
+        <!-- Part 2: working. -->
+        <TextView
+            android:id="@+id/working"
+            style="@style/Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityLiveRegion="polite"
+            android:text="@string/working"
+            android:visibility="gone" />
+
+        <!-- Part 3: done. -->
+        <LinearLayout
+            android:id="@+id/done"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView style="@style/Heading" android:layout_width="match_parent" android:layout_height="wrap_content" android:accessibilityHeading="true" android:accessibilityLiveRegion="polite" android:text="@string/done_title" />
+            <TextView android:id="@+id/done_summary" style="@style/Body" android:layout_width="match_parent" android:layout_height="wrap_content" />
+            <TextView style="@style/Body" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/next_steps" />
+
+            <Button android:id="@+id/open_results" style="@style/PrimaryButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/open_results" />
+            <Button android:id="@+id/share" style="@style/SecondaryButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/share" />
+            <Button android:id="@+id/show_report" style="@style/SecondaryButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/show_report" />
+
+            <TextView
+                android:id="@+id/report_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/code_bg"
+                android:fontFamily="monospace"
+                android:padding="12dp"
+                android:textColor="@color/text"
+                android:textIsSelectable="true"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <TextView style="@style/Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="28dp" android:text="@string/known_only" />
+        </LinearLayout>
+
+        <TextView android:id="@+id/version" style="@style/Small" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32dp" />
+    </LinearLayout>
+</ScrollView>

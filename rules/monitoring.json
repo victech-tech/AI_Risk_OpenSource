@@ -102,6 +102,9 @@
     "match": {
       "installedAppName": [
         "^Qustodio"
+      ],
+      "packageName": [
+        "com.qustodio.qustodioapp"
       ]
     },
     "capabilities": [

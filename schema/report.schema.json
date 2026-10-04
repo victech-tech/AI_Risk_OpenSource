@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/victech-tech/AI_Risk_OpenSource/schema/report.schema.json",
   "title": "AI Exposure Check scanner report",
-  "description": "The file written by ai-exposure-scanner. Version 1. It never contains secrets, file contents, browsing history or the user's home folder name (shown as <user>).",
+  "description": "The file written by ai-exposure-scanner (Windows) or the Android scanner app. Version 1. It never contains secrets, file contents, browsing history, messages or the user's home folder name (shown as <user>).",
   "type": "object",
   "required": ["schemaVersion", "scanner", "scannedAt", "os"],
   "properties": {
@@ -20,9 +20,9 @@
       "type": "object",
       "required": ["family"],
       "properties": {
-        "family": { "type": "string", "enum": ["windows", "darwin", "linux"] },
+        "family": { "type": "string", "enum": ["windows", "darwin", "linux", "android"] },
         "version": { "type": "string" },
-        "edition": { "type": "string" },
+        "edition": { "type": "string", "description": "On Android: the phone maker, for example Samsung. Never the model or serial number." },
         "arch": { "type": "string" }
       }
     },
@@ -35,7 +35,17 @@
           "name": { "type": "string", "maxLength": 200 },
           "publisher": { "type": "string", "maxLength": 200 },
           "version": { "type": "string", "maxLength": 200 },
-          "scope": { "type": "string", "enum": ["user", "machine"] }
+          "scope": {
+            "type": "string",
+            "enum": ["user", "machine"],
+            "description": "On Android: user for apps the person installed, machine for apps that came with the phone."
+          },
+          "id": { "type": "string", "maxLength": 200, "description": "Android only: the app's package name, for example com.anydesk.anydeskandroid." },
+          "installer": {
+            "type": "string",
+            "maxLength": 200,
+            "description": "Android only: package name of the app store that installed it (for example com.android.vending for Google Play). Left out when unknown or installed from a file."
+          }
         }
       }
     },
@@ -57,7 +67,7 @@
         "required": ["name", "source"],
         "properties": {
           "name": { "type": "string", "maxLength": 200 },
-          "source": { "type": "string" },
+          "source": { "type": "string", "description": "Where it was found. On Android: android-boot (the app asks to start when the phone turns on)." },
           "command": { "type": "string", "description": "Program name only, never arguments." }
         }
       }
@@ -70,9 +80,10 @@
         "properties": {
           "capability": {
             "type": "string",
-            "description": "Known values: microphone, camera, location, screen-capture, screen-capture-without-border."
+            "description": "Known values on Windows: microphone, camera, location, screen-capture, screen-capture-without-border. On Android also: accessibility, device-admin, notification-access, keyboard, display-over-apps, usage-access, sms, call-log, contacts."
           },
           "app": { "type": "string", "maxLength": 200 },
+          "appId": { "type": "string", "maxLength": 200, "description": "Android only: the app's package name." },
           "allowed": { "type": "boolean" },
           "lastUsed": { "type": "string", "format": "date-time" }
         }

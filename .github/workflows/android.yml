@@ -1,0 +1,82 @@
+name: Android app
+
+# Checks the Android scanner app (android/): unit tests, Android lint, a
+# release build, the built app's permissions (only QUERY_ALL_PACKAGES, never
+# internet), and the real collector on an Android emulator.
+
+on:
+  push:
+    paths:
+      - "android/**"
+      - "schema/**"
+      - "testdata/reports/**"
+      - ".github/workflows/android*.yml"
+  pull_request:
+    paths:
+      - "android/**"
+      - "schema/**"
+      - "testdata/reports/**"
+      - ".github/workflows/android*.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build, test and lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Install Android 16 SDK
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;36.0.0" > /dev/null
+      - name: Unit tests, lint and release build
+        run: ./gradlew --no-daemon testDebugUnitTest lintRelease assembleRelease
+      - name: The app asks only for QUERY_ALL_PACKAGES
+        run: |
+          perms=$("$ANDROID_HOME/build-tools/36.0.0/aapt2" dump permissions app/build/outputs/apk/release/app-release-unsigned.apk | grep uses-permission || true)
+          echo "$perms"
+          if [ "$perms" != "uses-permission: name='android.permission.QUERY_ALL_PACKAGES'" ]; then
+            echo "The app must ask only for QUERY_ALL_PACKAGES (and never for internet access)."; exit 1
+          fi
+      - name: Keep the lint report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-lint
+          path: android/app/build/reports/
+          if-no-files-found: ignore
+
+  device:
+    name: Run on an Android emulator
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Enable KVM (hardware speed-up for the emulator)
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Install Android 16 SDK
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;36.0.0" > /dev/null
+      - name: On-device test
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          working-directory: android
+          script: ./gradlew --no-daemon connectedDebugAndroidTest

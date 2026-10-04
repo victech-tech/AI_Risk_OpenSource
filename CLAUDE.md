@@ -8,6 +8,7 @@ Any new function, bug fix or behaviour change here must also be recorded in the 
 
 ## What this repo is
 
+- A read-only Android scanner app (`android/`, Java, no libraries, one permission: `QUERY_ALL_PACKAGES`, no internet permission) that writes the same report format with `os.family: android`.
 - A read-only Windows scanner (Go, single static `.exe`, no installer, no admin rights) that writes a JSON report of facts, plus an HTML results page that embeds it and loads the website's viewer code (`internal/report/html.go`; locked down by its own CSP).
 - The public detection rules dataset (`rules/*.json`) and its schema.
 - The report format (`schema/report.schema.json`).
@@ -20,7 +21,7 @@ Any new function, bug fix or behaviour change here must also be recorded in the 
 - **No secrets in the report.** Only MCP server names and the command's program name; never args, env, headers, tokens or URLs. Home folder replaced with `<user>`. Everything goes through `internal/redact`.
 - Read only the locations in the README table; update the table in the same change as any new location.
 - Never change, delete or install anything on the user's device.
-- Dependencies: standard library and `golang.org/x/sys` only.
+- Dependencies: standard library and `golang.org/x/sys` only. Android app: Android framework only (JUnit and AndroidX Test for tests only); never add the INTERNET permission (`internal/policy/android_test.go` and CI enforce this).
 - **No proprietary code in this repo** (keeps free open-source signing programmes such as SignPath Foundation and Certum Open Source open to us).
 - The scanner collects facts only; it never judges risk.
 - Rule changes never trigger a scanner release. Release rarely.
@@ -37,6 +38,7 @@ rules/              rules JSON + rules_test.go
 schema/             report.schema.json
 testdata/           fixtures (fake secrets live here)
 packaging/msix/     Microsoft Store package: manifest template, icons, build.ps1
+android/            Android app (Gradle); see android/README.md
 ```
 
 ## Commands
@@ -45,6 +47,7 @@ packaging/msix/     Microsoft Store package: manifest template, icons, build.ps1
 go test ./...
 GOOS=windows go vet ./...
 go test ./rules/            # rules checks
+cd android && ./gradlew testDebugUnitTest lintRelease assembleRelease   # Android app (needs the Android SDK)
 ```
 
 ## Style

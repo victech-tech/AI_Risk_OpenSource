@@ -20,12 +20,13 @@
         "match": {
           "type": "object",
           "additionalProperties": false,
-          "description": "Patterns are case-insensitive regular expressions, except extensionId and configTool, which are exact (case-insensitive) matches.",
+          "description": "Patterns are case-insensitive regular expressions, except extensionId, configTool and packageName, which are exact (case-insensitive) matches.",
           "properties": {
             "installedAppName": { "$ref": "#/$defs/stringList" },
             "processName": { "$ref": "#/$defs/stringList" },
             "extensionId": { "$ref": "#/$defs/stringList" },
-            "configTool": { "$ref": "#/$defs/stringList" }
+            "configTool": { "$ref": "#/$defs/stringList" },
+            "packageName": { "$ref": "#/$defs/stringList", "description": "Android package names, for example com.anydesk.anydeskandroid." }
           }
         },
         "capabilities": {

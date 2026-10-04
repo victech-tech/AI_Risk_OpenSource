@@ -18,4 +18,9 @@
 // Opening the report page at the end is done by asking Windows to open an
 // address in the user's own browser (rundll32 url.dll), which is not a
 // network connection made by the scanner.
+//
+// The Android app (android/) is held to the same promise. Its manifest may
+// ask only for QUERY_ALL_PACKAGES (to list the apps), so Android itself
+// refuses any connection, and no Java file may import network or web-view
+// packages. CI also checks the permissions of the built app.
 package policy

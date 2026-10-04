@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The website's palette: warm off-white, near-black, one terracotta accent. -->
+<resources>
+    <color name="bg">#FBFAF7</color>
+    <color name="text">#141414</color>
+    <color name="text_soft">#57544F</color>
+    <color name="accent">#A8431B</color>
+    <color name="button_text">#FBFAF7</color>
+    <color name="code_bg">#F2F0EB</color>
+</resources>

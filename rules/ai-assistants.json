@@ -10,6 +10,9 @@
       ],
       "processName": [
         "^chatgpt\\.exe$"
+      ],
+      "packageName": [
+        "com.openai.chatgpt"
       ]
     },
     "capabilities": [
@@ -44,6 +47,9 @@
       ],
       "configTool": [
         "claude-desktop"
+      ],
+      "packageName": [
+        "com.anthropic.claude"
       ]
     },
     "capabilities": [
@@ -76,6 +82,9 @@
       ],
       "processName": [
         "^copilot\\.exe$"
+      ],
+      "packageName": [
+        "com.microsoft.copilot"
       ]
     },
     "capabilities": [
@@ -124,6 +133,9 @@
     "match": {
       "installedAppName": [
         "^Google Gemini$"
+      ],
+      "packageName": [
+        "com.google.android.apps.bard"
       ]
     },
     "capabilities": [
@@ -155,6 +167,9 @@
       ],
       "processName": [
         "^perplexity\\.exe$"
+      ],
+      "packageName": [
+        "ai.perplexity.app.android"
       ]
     },
     "capabilities": [
@@ -199,6 +214,9 @@
       ],
       "processName": [
         "^m365copilot\\.exe$"
+      ],
+      "packageName": [
+        "com.microsoft.office.officehubrow"
       ]
     },
     "capabilities": [

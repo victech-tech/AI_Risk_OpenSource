@@ -23,6 +23,7 @@ type rule struct {
 		ProcessName      []string `json:"processName"`
 		ExtensionID      []string `json:"extensionId"`
 		ConfigTool       []string `json:"configTool"`
+		PackageName      []string `json:"packageName"`
 	} `json:"match"`
 	Capabilities []string          `json:"capabilities"`
 	BaseRisk     string            `json:"baseRisk"`
@@ -43,8 +44,10 @@ var (
 	extIDPattern = regexp.MustCompile(`^([a-p]{32}|[a-z0-9-]+\.[a-z0-9-]+|[^\s]+@[^\s]+|\{[0-9a-fA-F-]{36}\})$`)
 	// Regex features that work differently (or not at all) in Go and in the
 	// browser's JavaScript, which is what the website uses.
-	nonPortable = regexp.MustCompile(`\(\?[a-zA-Z]|\(\?<?[=!]|\\[pPzZAG]`)
-	jargon      = []string{"exfiltrat", "malware", "spyware", "malicious", "threat actor", "you are safe"}
+	// Android package names: two or more dot-separated parts, lower case.
+	packagePattern = regexp.MustCompile(`^[a-z][a-z0-9_]*(\.[a-z0-9_]+)+$`)
+	nonPortable    = regexp.MustCompile(`\(\?[a-zA-Z]|\(\?<?[=!]|\\[pPzZAG]`)
+	jargon         = []string{"exfiltrat", "malware", "spyware", "malicious", "threat actor", "you are safe"}
 )
 
 func set(xs ...string) map[string]bool {
@@ -133,6 +136,14 @@ func checkRule(t *testing.T, where string, r rule) {
 		if !extIDPattern.MatchString(id) {
 			t.Errorf("%s: extension id %q does not look right (editor ids must be lower case)", where, id)
 		}
+	}
+	for _, id := range r.Match.PackageName {
+		if !packagePattern.MatchString(id) {
+			t.Errorf("%s: Android package name %q does not look right (lower case, dot-separated)", where, id)
+		}
+	}
+	if len(r.Match.PackageName) > 0 && r.HowToTurnOff["android"] == "" {
+		t.Errorf("%s: rules with an Android package name need howToTurnOff.android", where)
 	}
 	if len(r.Summary) < 20 || len(r.Summary) > 400 {
 		t.Errorf("%s: summary should be 20 to 400 characters", where)

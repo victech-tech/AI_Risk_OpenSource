@@ -10,6 +10,11 @@
       ],
       "processName": [
         "^teamviewer(_service)?\\.exe$"
+      ],
+      "packageName": [
+        "com.teamviewer.teamviewer.market.mobile",
+        "com.teamviewer.quicksupport.market",
+        "com.teamviewer.host.market"
       ]
     },
     "capabilities": [
@@ -43,6 +48,9 @@
       ],
       "processName": [
         "^anydesk\\.exe$"
+      ],
+      "packageName": [
+        "com.anydesk.anydeskandroid"
       ]
     },
     "capabilities": [
@@ -75,6 +83,9 @@
       ],
       "processName": [
         "^rustdesk\\.exe$"
+      ],
+      "packageName": [
+        "com.carriez.flutter_hbb"
       ]
     },
     "capabilities": [

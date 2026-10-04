@@ -1,6 +1,6 @@
 # AI Exposure Scanner
 
-A free, open-source Windows program that lists which AI tools, remote access tools and monitoring tools on your PC could see or control it. It makes a report file that you can read yourself, then drop onto the AI Exposure Check website, which explains the results in plain English **inside your browser**. Nothing is uploaded.
+A free, open-source Windows program (and a matching [Android app](#android-app)) that lists which AI tools, remote access tools and monitoring tools on your PC could see or control it. It makes a report file that you can read yourself, then drop onto the AI Exposure Check website, which explains the results in plain English **inside your browser**. Nothing is uploaded.
 
 - **Read-only.** It never changes, deletes or installs anything.
 - **No internet.** The scanner makes no network connections at all.
@@ -61,6 +61,24 @@ This is the complete list. The scanner reads nothing else. Any change to this li
 
 It also reads the Windows version and edition from `HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion`.
 
+### Android app
+
+The Android app (`android/`) reads the phone through Android's own public interfaces. It asks for one permission, `QUERY_ALL_PACKAGES` (to see the list of apps), and has **no internet permission**, so Android itself stops it connecting to anything.
+
+| Section | Where it reads | What it keeps |
+|---|---|---|
+| Installed apps | `PackageManager.getInstalledPackages` | App name, package name (for example `com.anydesk.anydeskandroid`), version, whether it came with the phone, and the package name of the app store that installed it. Apps that came with the phone are kept only if they have an icon or hold special access |
+| Permissions | Each listed app's granted permissions (`PackageInfo.requestedPermissionsFlags`) | Which apps can use the microphone, camera, location, text messages, call history or contacts |
+| Draw over other apps, usage access | `AppOpsManager`, only for apps you installed that ask for these | Allowed yes, or not listed |
+| Accessibility access | `AccessibilityManager.getEnabledAccessibilityServiceList` | App name and package name |
+| Device admin apps | `DevicePolicyManager.getActiveAdmins` | App name and package name |
+| Notification access | `Settings.Secure` `enabled_notification_listeners` | App name and package name |
+| Keyboards | `InputMethodManager.getEnabledInputMethodList` | App name and package name |
+| Starts when the phone turns on | Apps you installed that were granted `RECEIVE_BOOT_COMPLETED` | App name and package name |
+| Phone details | `android.os.Build` | Android version, phone maker (never the model or serial number), processor type |
+
+The report is saved in **Downloads** as `ai-exposure-report-YYYYMMDD-HHMM.json`. The app can open the website's report page in your browser, where you choose the file; the browser reads it on your phone. The app never reads messages, notifications' contents, photos, files, accounts, passwords or anything typed. See [android/README.md](android/README.md) to build it.
+
 ### What it never reads or keeps
 
 - Browsing history, cookies, saved passwords, bookmarks, the browser's `Preferences` file or any other profile file.
@@ -94,7 +112,8 @@ cmd/scanner/          entry point, consent prompt, writes the report
 internal/collect/     one file per section; Windows code behind build tags
 internal/report/      report structs and JSON writer
 internal/redact/      secret-stripping and path redaction helpers
-internal/policy/      tests that enforce "no network connections"
+internal/policy/      tests that enforce "no network connections" (Windows and Android)
+android/              the Android app (Java, no libraries; see android/README.md)
 schema/               report.schema.json (the report format, version 1)
 rules/                detection rules (*.json) and rules.schema.json
 testdata/             fake profiles, extensions and config files with fake secrets
@@ -112,7 +131,7 @@ GOOS=windows go vet ./...                      # check the Windows code builds
 GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -o ai-exposure-scanner.exe ./cmd/scanner
 ```
 
-Dependencies are kept to the standard library and `golang.org/x/sys` only. Every dependency is something users must trust.
+Dependencies are kept to the standard library and `golang.org/x/sys` only. Every dependency is something users must trust. The Android app likewise uses no libraries, only the Android framework (test-only libraries aside).
 
 ### Rules
 
@@ -121,6 +140,8 @@ Rules are JSON files in `rules/`, one file per category. See [CONTRIBUTING.md](C
 ### Releases
 
 Pushing a `v*` tag runs `.github/workflows/release.yml`: GoReleaser builds the `.exe` files, writes `checksums.txt`, creates build attestations and publishes the release. The workflow also contains an optional SignPath signing step, which stays switched off unless SignPath secrets are added.
+
+Pushing an `android-v*` tag runs `.github/workflows/android-release.yml` for the Android app (see [android/README.md](android/README.md)). Android releases are never marked "latest", so `releases/latest` always stays the Windows scanner.
 
 ### Microsoft Store package
 

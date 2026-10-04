@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AI Exposure Check</string>
+    <string name="version">Version %1$s</string>
+
+    <string name="eyebrow">Free, read-only check</string>
+    <string name="title">Which AI tools can see or control this phone?</string>
+    <string name="intro">This app makes a list of the apps on your phone and the special access Android has given them. You then see, in plain English, which known AI tools, remote control apps and monitoring apps you have, and how to switch each one off.</string>
+
+    <string name="reads_title">What it reads</string>
+    <string name="reads">• The names of your apps, and which app store installed them\n• Which apps can use your microphone, camera, location, text messages, call history or contacts\n• Which apps have accessibility access (can see your screen and tap for you)\n• Device admin apps (can lock or wipe the phone)\n• Apps that can read your notifications, your keyboards, and apps that can draw over other apps</string>
+
+    <string name="never_title">What it never does</string>
+    <string name="never">• Change, delete or install anything\n• Connect to the internet. This app has no internet permission at all, so Android will not let it\n• Read your messages, photos, files, passwords, accounts or anything you type</string>
+
+    <string name="where_title">Where the report goes</string>
+    <string name="where">The report is saved in your Downloads folder. Nothing is sent anywhere. To see your results, open our report page in your browser and choose the file. Your browser reads it on your phone; it is never uploaded.</string>
+
+    <string name="start">Start the check</string>
+    <string name="working">Looking through your apps. This takes a few seconds.</string>
+
+    <string name="done_title">All done</string>
+    <plurals name="apps_found">
+        <item quantity="one">The report lists %d app.</item>
+        <item quantity="other">The report lists %d apps.</item>
+    </plurals>
+    <string name="saved_as">It is saved in your Downloads folder as %1$s</string>
+    <string name="not_saved">The report could not be saved in your Downloads folder. You can still see what it contains below.</string>
+    <string name="next_steps">Next: tap the button below. When the report page opens, tap Choose file, go to Downloads and pick the report. Your results appear straight away.</string>
+    <string name="open_results">Open the results page</string>
+    <string name="share">Send the report to myself</string>
+    <string name="show_report">See exactly what the report contains</string>
+    <string name="hide_report">Hide the report</string>
+    <string name="pick_file_hint">Tap Choose file, then pick %1$s from Downloads.</string>
+    <string name="no_browser">No web browser was found on this phone.</string>
+    <string name="known_only">This check looks for known tools and settings. It cannot find software designed to hide. If you think someone is monitoring you, read the safety page on our website before you change anything.</string>
+</resources>

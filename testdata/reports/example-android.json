@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "scanner": {
+    "name": "ai-exposure-scanner",
+    "version": "0.1.0"
+  },
+  "scannedAt": "2026-10-04T12:00:00Z",
+  "os": {
+    "family": "android",
+    "version": "14",
+    "edition": "Samsung",
+    "arch": "arm64-v8a"
+  },
+  "installedApps": [
+    {
+      "name": "ChatGPT",
+      "version": "1.2025.266",
+      "scope": "user",
+      "id": "com.openai.chatgpt",
+      "installer": "com.android.vending"
+    },
+    {
+      "name": "AnyDesk",
+      "version": "7.0.1",
+      "scope": "user",
+      "id": "com.anydesk.anydeskandroid",
+      "installer": "com.android.vending"
+    },
+    {
+      "name": "System Helper",
+      "version": "2.1",
+      "scope": "user",
+      "id": "com.example.helper"
+    },
+    {
+      "name": "Gemini",
+      "version": "1.0",
+      "scope": "machine",
+      "id": "com.google.android.apps.bard"
+    },
+    {
+      "name": "Samsung Keyboard",
+      "version": "5.6",
+      "scope": "machine",
+      "id": "com.samsung.android.honeyboard"
+    }
+  ],
+  "startupItems": [
+    {
+      "name": "AnyDesk",
+      "source": "android-boot",
+      "command": "com.anydesk.anydeskandroid"
+    },
+    {
+      "name": "System Helper",
+      "source": "android-boot",
+      "command": "com.example.helper"
+    }
+  ],
+  "privacyPermissions": [
+    {
+      "capability": "microphone",
+      "app": "ChatGPT",
+      "appId": "com.openai.chatgpt",
+      "allowed": true
+    },
+    {
+      "capability": "accessibility",
+      "app": "AnyDesk",
+      "appId": "com.anydesk.anydeskandroid",
+      "allowed": true
+    },
+    {
+      "capability": "accessibility",
+      "app": "System Helper",
+      "appId": "com.example.helper",
+      "allowed": true
+    },
+    {
+      "capability": "device-admin",
+      "app": "System Helper",
+      "appId": "com.example.helper",
+      "allowed": true
+    },
+    {
+      "capability": "notification-access",
+      "app": "System Helper",
+      "appId": "com.example.helper",
+      "allowed": true
+    },
+    {
+      "capability": "location",
+      "app": "System Helper",
+      "appId": "com.example.helper",
+      "allowed": true
+    },
+    {
+      "capability": "keyboard",
+      "app": "Samsung Keyboard",
+      "appId": "com.samsung.android.honeyboard",
+      "allowed": true
+    }
+  ],
+  "errors": [
+    {
+      "section": "privacyPermissions",
+      "message": "Android did not say which apps can draw over other apps or see app usage."
+    }
+  ]
+}

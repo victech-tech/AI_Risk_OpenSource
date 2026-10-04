@@ -1,0 +1,103 @@
+name: Release Android app
+
+# Runs on an android-v* tag (for example android-v0.1.0), or by hand:
+# Actions > Release Android app > Run workflow, entering the version.
+#
+# Builds the app (.apk for direct install, .aab for Google Play), checks it
+# asks only for QUERY_ALL_PACKAGES, writes checksums and build attestations.
+#
+# Signing: Android only installs signed apps. Add these repository secrets
+# (see android/README.md for how to make the key):
+#   ANDROID_KEYSTORE_BASE64   the upload key file, base64-encoded
+#   ANDROID_KEYSTORE_PASSWORD
+#   ANDROID_KEY_ALIAS
+#   ANDROID_KEY_PASSWORD
+# Without them the files are kept as workflow artifacts only (for testing),
+# and no GitHub release is made.
+#
+# The release is never marked "latest": the website's Windows download links
+# use releases/latest, which must stay the Windows scanner.
+
+on:
+  push:
+    tags: ["android-v*"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to release, for example android-v0.1.0"
+        required: true
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ inputs.version || github.ref_name }}
+      SIGNING_ENABLED: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the version and create the tag (when run by hand)
+        run: |
+          if ! echo "$TAG" | grep -Eq '^android-v[0-9]+\.[0-9]+\.[0-9]+$'; then echo "Version must look like android-v0.1.0"; exit 1; fi
+          echo "VERSION_NAME=${TAG#android-v}" >> "$GITHUB_ENV"
+          echo "VERSION_CODE=${{ github.run_number }}" >> "$GITHUB_ENV"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            if [ "$GITHUB_REF" != "refs/heads/main" ]; then echo "Run this from main"; exit 1; fi
+            if git rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then echo "$TAG already exists"; exit 1; fi
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git tag -a "$TAG" -m "Release $TAG"
+            git push origin "$TAG"
+          fi
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Install Android 16 SDK
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;36.0.0" > /dev/null
+      - name: Unpack the signing key
+        if: env.SIGNING_ENABLED == 'true'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/upload.jks"
+          echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/upload.jks" >> "$GITHUB_ENV"
+      - name: Test and build
+        working-directory: android
+        env:
+          REPORT_URL: ${{ vars.REPORT_URL || 'https://ai-exposure-check.vinvictech.workers.dev/report/' }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: ./gradlew --no-daemon testDebugUnitTest lintRelease assembleRelease bundleRelease
+      - name: Collect the files and check permissions
+        run: |
+          mkdir out
+          apk=$(ls android/app/build/outputs/apk/release/*.apk)
+          perms=$("$ANDROID_HOME/build-tools/36.0.0/aapt2" dump permissions "$apk" | grep uses-permission || true)
+          if [ "$perms" != "uses-permission: name='android.permission.QUERY_ALL_PACKAGES'" ]; then echo "Unexpected permissions: $perms"; exit 1; fi
+          cp "$apk" out/ai-exposure-scanner-android.apk
+          cp android/app/build/outputs/bundle/release/app-release.aab out/ai-exposure-scanner-android.aab
+          (cd out && sha256sum * > checksums-android.txt && cat checksums-android.txt)
+      - name: Attest the files
+        if: ${{ !github.event.repository.private }}
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: "out/ai-exposure-scanner-android.*"
+      - name: Keep the files
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-${{ env.VERSION_NAME }}
+          path: out/
+      - name: Publish the release (signed builds only, never marked latest)
+        if: env.SIGNING_ENABLED == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "$TAG" out/* --latest=false --title "Android app $VERSION_NAME" \
+            --notes "Read-only Android scanner. It asks only for permission to list apps, and has no internet permission. Check your download against checksums-android.txt."
