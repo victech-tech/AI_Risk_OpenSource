@@ -18,5 +18,4 @@ func downloadsDir() (string, error) {
 	return filepath.Join(home, "Downloads"), nil
 }
 
-func openBrowser(string)  {}
-func showInFolder(string) {}
+func openInBrowser(string) {}

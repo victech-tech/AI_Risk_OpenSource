@@ -54,14 +54,38 @@ func TestYesWritesReport(t *testing.T) {
 	if code := run([]string{"--yes", "--out", dir, "--no-browser"}, strings.NewReader(""), &out); code != 0 {
 		t.Fatalf("exit %d: %s", code, out.String())
 	}
-	for _, want := range []string{"Scan finished", "NEXT STEP: drag your report file onto that page", "which AI tools can see or control this PC", "how to switch each one off", reportURL} {
+	for _, want := range []string{"Scan finished", "Your results page:", "which AI tools can see or control this PC", "how to switch each one off", "blocked from sending anything", reportURL} {
 		if !strings.Contains(out.String(), want) {
 			t.Errorf("finish screen missing %q", want)
 		}
 	}
 	entries, _ := os.ReadDir(dir)
-	if len(entries) != 1 || !strings.HasPrefix(entries[0].Name(), "ai-exposure-report-") {
-		t.Fatalf("expected one report file, got %v", entries)
+	if len(entries) != 2 {
+		t.Fatalf("expected the .json report and the .html results page, got %v", entries)
+	}
+	for _, e := range entries {
+		if !strings.HasPrefix(e.Name(), "ai-exposure-report-") {
+			t.Errorf("unexpected file %s", e.Name())
+		}
+	}
+	page, err := os.ReadFile(filepath.Join(dir, strings.TrimSuffix(entries[0].Name(), ".html")+".html"))
+	if err == nil && !strings.Contains(string(page), siteURL()+"viewer/viewer.js") {
+		t.Error("results page does not load the viewer from the site")
+	}
+}
+
+func TestSiteURL(t *testing.T) {
+	old := reportURL
+	defer func() { reportURL = old }()
+	for in, want := range map[string]string{
+		"https://x.test/report/": "https://x.test/",
+		"https://x.test/report":  "https://x.test/",
+		"https://x.test/":        "https://x.test/",
+	} {
+		reportURL = in
+		if got := siteURL(); got != want {
+			t.Errorf("siteURL(%q) = %q, want %q", in, got, want)
+		}
 	}
 }
 

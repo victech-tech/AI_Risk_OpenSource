@@ -82,11 +82,23 @@ func run(args []string, stdin io.Reader, stdout io.Writer) int {
 		waitForEnter(stdout, in, opts)
 		return 1
 	}
+	pagePath := report.HTMLPath(outPath)
+	if pagePath == outPath {
+		pagePath = outPath + ".html"
+	}
+	if err := r.WriteHTML(pagePath, siteURL()); err != nil {
+		// The .json report is still saved; the website can read it.
+		fmt.Fprintf(stdout, "\n(Could not save the results page: %v)\n", err)
+		pagePath = ""
+	}
 
-	printFinish(stdout, outPath, !opts.noBrowser)
+	printFinish(stdout, outPath, pagePath, !opts.noBrowser)
 	if !opts.noBrowser {
-		openBrowser(reportURL)
-		showInFolder(outPath)
+		if pagePath != "" {
+			openInBrowser(pagePath)
+		} else {
+			openInBrowser(reportURL)
+		}
 	}
 	waitForEnter(stdout, in, opts)
 	return 0
@@ -118,35 +130,42 @@ The report will be saved here:
 `, version, outPath)
 }
 
+// siteURL is the website's address, taken from reportURL
+// (https://example/report/ -> https://example/).
+func siteURL() string {
+	return strings.TrimSuffix(strings.TrimSuffix(reportURL, "/"), "/report") + "/"
+}
+
 // printFinish tells people where their results are. The scanner itself
-// never judges risk (the website does), so this screen must make the next
-// step impossible to miss.
-func printFinish(w io.Writer, outPath string, browser bool) {
+// never judges risk (the website's code does, inside the results page), so
+// this screen must make the next step impossible to miss.
+func printFinish(w io.Writer, jsonPath, pagePath string, browser bool) {
 	line := strings.Repeat("=", 64)
-	fmt.Fprintf(w, "\n%s\n Scan finished. Your report is ready.\n%s\n\n", line, line)
-	if browser {
-		fmt.Fprintln(w, "Your results are on the AI Exposure Check report page, which is")
-		fmt.Fprintln(w, "opening in your browser now.")
+	if pagePath != "" && browser {
+		fmt.Fprintf(w, "\n%s\n Scan finished. Your results are opening in your browser.\n%s\n\n", line, line)
 	} else {
-		fmt.Fprintln(w, "Your results are on the AI Exposure Check report page:")
-		fmt.Fprintf(w, "  %s\n", reportURL)
+		fmt.Fprintf(w, "\n%s\n Scan finished. Your report is ready.\n%s\n\n", line, line)
 	}
-	fmt.Fprintln(w)
-	fmt.Fprintln(w, "  NEXT STEP: drag your report file onto that page.")
-	fmt.Fprintln(w)
-	fmt.Fprintf(w, "  Your report file: %s\n", outPath)
-	if browser {
-		fmt.Fprintln(w, "  (File Explorer is open with the file selected.)")
+	if pagePath != "" {
+		fmt.Fprintln(w, "Your results page:")
+		fmt.Fprintf(w, "  %s\n", pagePath)
+		fmt.Fprintln(w, "  (double-click it to open it again at any time)")
+		fmt.Fprintln(w)
+		fmt.Fprintln(w, "It shows you:")
+		fmt.Fprintln(w, "  - which AI tools can see or control this PC")
+		fmt.Fprintln(w, "  - how to switch each one off")
+		fmt.Fprintln(w)
+		fmt.Fprintln(w, "Your data stays on this PC. The page loads only its display code")
+		fmt.Fprintln(w, "from our website and is blocked from sending anything anywhere.")
+		fmt.Fprintln(w)
 	}
-	fmt.Fprintln(w)
-	fmt.Fprintln(w, "The page will show you:")
-	fmt.Fprintln(w, "  - which AI tools can see or control this PC")
-	fmt.Fprintln(w, "  - how to switch each one off")
-	fmt.Fprintln(w)
-	fmt.Fprintln(w, "The file is read inside your browser. It is not uploaded.")
-	fmt.Fprintln(w, "You can also open the file in Notepad to see exactly what it contains.")
-	if browser {
-		fmt.Fprintf(w, "If the page did not open, go to: %s\n", reportURL)
+	fmt.Fprintln(w, "The raw data is saved here (you can open it in Notepad):")
+	fmt.Fprintf(w, "  %s\n", jsonPath)
+	if pagePath == "" {
+		fmt.Fprintln(w)
+		fmt.Fprintf(w, "To see your results, go to %s and drag that file onto the page.\n", reportURL)
+	} else {
+		fmt.Fprintf(w, "If the results page does not work, go to %s\nand drag the .json file onto it.\n", reportURL)
 	}
 }
 
