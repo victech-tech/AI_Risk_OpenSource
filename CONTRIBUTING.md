@@ -51,12 +51,14 @@ Any file may also hold `other` rules. Each rule looks like this:
 - `processName` is tested against program names such as `exampleai.exe` (running programs, startup programs and apps with privacy permissions).
 - `extensionId` is an exact id: 32 letters for Chrome/Edge/Brave, `publisher.name` in lower case for VS Code/Cursor/Windsurf, or the add-on id for Firefox.
 - `configTool` is an exact tool key from `internal/collect/aiconfigs.go`, for example `claude-desktop`, `cursor`, `gemini-cli`.
+- `packageName` is an exact Android package name, for example `com.anydesk.anydeskandroid` (as in the app's Google Play address). A rule with one needs `howToTurnOff.android`.
 - A rule with no match fields is allowed. The website uses it in the self-check only.
 
 ### Allowed values
 
 - `category`: `ai-assistant`, `ai-agent`, `ai-browser-extension`, `ai-coding-tool`, `remote-access`, `monitoring`, `other`
-- `capabilities`: `screen`, `input-control`, `files`, `microphone`, `camera`, `browser-data`, `remote-access`, `runs-commands`, `background`
+- `capabilities`: `screen`, `input-control`, `files`, `microphone`, `camera`, `browser-data`, `remote-access`, `runs-commands`, `background`, `notifications` (reads notifications), `typing` (sees what you type), `device-admin` (can lock or wipe the device)
+- `platformCapabilities` (optional): what it can do on one platform when that differs, for example `{ "android": ["files", "microphone"] }` when the phone app cannot run programs
 - `baseRisk`: `low`, `medium`, `high`
 - `howToTurnOff` keys: `windows`, `mac`, `ios`, `android` (at least one)
 

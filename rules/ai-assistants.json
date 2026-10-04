@@ -57,6 +57,12 @@
       "microphone",
       "runs-commands"
     ],
+    "platformCapabilities": {
+      "android": [
+        "files",
+        "microphone"
+      ]
+    },
     "baseRisk": "medium",
     "summary": "Anthropic's Claude app. It can read files you give it. If tool connections (called connectors or MCP servers) are added, it can also open files on your computer or run programs when you approve.",
     "howToTurnOff": {
@@ -92,6 +98,12 @@
       "microphone",
       "background"
     ],
+    "platformCapabilities": {
+      "android": [
+        "microphone",
+        "camera"
+      ]
+    },
     "baseRisk": "medium",
     "summary": "Microsoft's Copilot assistant. It can listen in voice mode and, with Copilot Vision, see what is on your screen when you share it. It may start with Windows.",
     "howToTurnOff": {

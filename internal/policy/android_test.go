@@ -52,7 +52,7 @@ func TestAndroidNoNetworkCode(t *testing.T) {
 		if err != nil {
 			return err
 		}
-		if d.IsDir() || !(strings.HasSuffix(path, ".java") || strings.HasSuffix(path, ".kt")) {
+		if d.IsDir() || (!strings.HasSuffix(path, ".java") && !strings.HasSuffix(path, ".kt")) {
 			return nil
 		}
 		n++

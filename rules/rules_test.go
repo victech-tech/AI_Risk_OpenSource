@@ -25,17 +25,18 @@ type rule struct {
 		ConfigTool       []string `json:"configTool"`
 		PackageName      []string `json:"packageName"`
 	} `json:"match"`
-	Capabilities []string          `json:"capabilities"`
-	BaseRisk     string            `json:"baseRisk"`
-	Summary      string            `json:"summary"`
-	HowToTurnOff map[string]string `json:"howToTurnOff"`
-	Links        []string          `json:"links"`
-	LastReviewed string            `json:"lastReviewed"`
+	Capabilities         []string            `json:"capabilities"`
+	PlatformCapabilities map[string][]string `json:"platformCapabilities"`
+	BaseRisk             string              `json:"baseRisk"`
+	Summary              string              `json:"summary"`
+	HowToTurnOff         map[string]string   `json:"howToTurnOff"`
+	Links                []string            `json:"links"`
+	LastReviewed         string              `json:"lastReviewed"`
 }
 
 var (
 	categories   = set("ai-assistant", "ai-agent", "ai-browser-extension", "ai-coding-tool", "remote-access", "monitoring", "other")
-	capabilities = set("screen", "input-control", "files", "microphone", "camera", "browser-data", "remote-access", "runs-commands", "background")
+	capabilities = set("screen", "input-control", "files", "microphone", "camera", "browser-data", "remote-access", "runs-commands", "background", "notifications", "typing", "device-admin")
 	risks        = set("low", "medium", "high")
 	platforms    = set("windows", "mac", "ios", "android")
 	idPattern    = regexp.MustCompile(`^[a-z0-9]+(-[a-z0-9]+)*$`)
@@ -121,6 +122,22 @@ func checkRule(t *testing.T, where string, r rule) {
 			t.Errorf("%s: capability %q listed twice", where, c)
 		}
 		caps[c] = true
+	}
+	for p, list := range r.PlatformCapabilities {
+		if !platforms[p] {
+			t.Errorf("%s: platformCapabilities has unknown platform %q", where, p)
+		}
+		if len(list) == 0 {
+			t.Errorf("%s: platformCapabilities.%s is empty", where, p)
+		}
+		for _, c := range list {
+			if !capabilities[c] {
+				t.Errorf("%s: platformCapabilities.%s has unknown capability %q", where, p, c)
+			}
+		}
+		if r.HowToTurnOff[p] == "" {
+			t.Errorf("%s: platformCapabilities.%s needs howToTurnOff.%s too", where, p, p)
+		}
 	}
 	for _, list := range [][]string{r.Match.InstalledAppName, r.Match.ProcessName} {
 		for _, p := range list {
