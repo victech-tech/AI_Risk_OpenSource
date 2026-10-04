@@ -8,7 +8,7 @@ Any new function, bug fix or behaviour change here must also be recorded in the 
 
 ## What this repo is
 
-- A read-only Windows scanner (Go, single static `.exe`, no installer, no admin rights) that writes a JSON report of facts.
+- A read-only Windows scanner (Go, single static `.exe`, no installer, no admin rights) that writes a JSON report of facts, plus an HTML results page that embeds it and loads the website's viewer code (`internal/report/html.go`; locked down by its own CSP).
 - The public detection rules dataset (`rules/*.json`) and its schema.
 - The report format (`schema/report.schema.json`).
 - The website (private repo) copies `rules/` and `schema/` at build time and does all matching and risk scoring in the user's browser.

@@ -14,8 +14,12 @@ A free, open-source Windows program that lists which AI tools, remote access too
 1. Download `ai-exposure-scanner-windows-x64.exe` from the [latest release](https://github.com/victech-tech/AI_Risk_OpenSource/releases/latest). If your PC has an ARM processor (for example some Surface and Copilot+ laptops), download `ai-exposure-scanner-windows-arm64.exe` instead.
 2. [Check the download](#check-your-download) (recommended).
 3. Double-click the file. A window opens and explains what the scanner will read. Nothing is read until you press **Y** then **Enter**.
-4. When it finishes, the report is saved in your **Downloads** folder as `ai-exposure-report-YYYYMMDD-HHMM.json`. You can open it in Notepad to see exactly what it contains.
-5. Your browser opens the report page. Drag the file onto the page to see your results.
+4. When it finishes, your results open in your browser: which AI tools can see or control your PC, and how to switch each one off.
+5. Two files are saved in your **Downloads** folder:
+   - `ai-exposure-report-YYYYMMDD-HHMM.html`: your results page. Double-click it to see your results again.
+   - `ai-exposure-report-YYYYMMDD-HHMM.json`: the report data. You can open it in Notepad to see exactly what it contains.
+
+The results page loads only its display code from the AI Exposure Check website. Your report stays inside the file, and the page's own security settings (a Content Security Policy) stop it sending data anywhere. Without internet, the page tells you to drag the `.json` file onto the website's report page instead.
 
 ### Microsoft Store version (coming soon)
 
