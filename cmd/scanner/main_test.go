@@ -89,6 +89,23 @@ func TestSiteURL(t *testing.T) {
 	}
 }
 
+func TestFixReportURL(t *testing.T) {
+	old := reportURL
+	defer func() { reportURL = old }()
+	for in, want := range map[string]string{
+		"":                       defaultReportURL,
+		"/":                      defaultReportURL,
+		"http://x.test/report/":  defaultReportURL,
+		"https://x.test/report/": "https://x.test/report/",
+	} {
+		reportURL = in
+		fixReportURL()
+		if reportURL != want {
+			t.Errorf("fixReportURL(%q) = %q, want %q", in, reportURL, want)
+		}
+	}
+}
+
 func TestResolveOutPath(t *testing.T) {
 	now := time.Date(2026, 10, 1, 12, 0, 0, 0, time.UTC)
 	dir := t.TempDir()
