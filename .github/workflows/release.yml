@@ -68,7 +68,8 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPORT_URL: ${{ vars.REPORT_URL }}
+          # An unset variable would pass an empty address, so fall back here too.
+          REPORT_URL: ${{ vars.REPORT_URL || 'https://ai-exposure-check.vinvictech.workers.dev/report/' }}
 
       - name: Collect the .exe files under their release names
         run: |

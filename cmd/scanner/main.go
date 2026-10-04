@@ -18,13 +18,25 @@ import (
 	"github.com/victech-tech/AI_Risk_OpenSource/internal/report"
 )
 
+// defaultReportURL is used when the build sets no usable address.
+const defaultReportURL = "https://ai-exposure-check.vinvictech.workers.dev/report/"
+
 // Set at build time by GoReleaser (see .goreleaser.yaml).
 var (
 	version   = "dev"
-	reportURL = "https://ai-exposure-check.vinvictech.workers.dev/report/"
+	reportURL = defaultReportURL
 )
 
+// fixReportURL falls back to the default address if the build set an
+// empty or non-https one (v0.1.2 shipped with an empty address).
+func fixReportURL() {
+	if !strings.HasPrefix(reportURL, "https://") {
+		reportURL = defaultReportURL
+	}
+}
+
 func main() {
+	fixReportURL()
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout))
 }
 
