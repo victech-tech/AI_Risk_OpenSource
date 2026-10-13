@@ -69,7 +69,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # An unset variable would pass an empty address, so fall back here too.
-          REPORT_URL: ${{ vars.REPORT_URL || 'https://ai-exposure-check.vinvictech.workers.dev/report/' }}
+          REPORT_URL: ${{ vars.REPORT_URL || 'https://aiexposurechecker.com/report/' }}
 
       - name: Collect the .exe files under their release names
         run: |
