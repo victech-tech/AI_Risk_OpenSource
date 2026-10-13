@@ -17,7 +17,7 @@ import (
 // blocks every connection, so the data cannot leave the computer.
 //
 // siteURL is the website's address with a trailing slash, for example
-// https://ai-exposure-check.vinvictech.workers.dev/
+// https://aiexposurechecker.com/
 func (r *Report) HTML(siteURL, jsonName string) ([]byte, error) {
 	if !strings.HasSuffix(siteURL, "/") {
 		siteURL += "/"

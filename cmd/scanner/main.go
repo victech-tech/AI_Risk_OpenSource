@@ -19,7 +19,7 @@ import (
 )
 
 // defaultReportURL is used when the build sets no usable address.
-const defaultReportURL = "https://ai-exposure-check.vinvictech.workers.dev/report/"
+const defaultReportURL = "https://aiexposurechecker.com/report/"
 
 // Set at build time by GoReleaser (see .goreleaser.yaml).
 var (
