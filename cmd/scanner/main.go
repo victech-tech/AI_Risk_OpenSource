@@ -179,6 +179,15 @@ func printFinish(w io.Writer, jsonPath, pagePath string, browser bool) {
 	} else {
 		fmt.Fprintf(w, "If the results page does not work, go to %s\nand drag the .json file onto it.\n", reportURL)
 	}
+	// Text only: the scanner never collects email addresses.
+	fmt.Fprintln(w)
+	fmt.Fprintf(w, "Get alerts about risky new AI tools: %s\n", subscribeURL())
+}
+
+// subscribeURL is the website's sign-up page, tagged as coming from the
+// scanner.
+func subscribeURL() string {
+	return siteURL() + "subscribe/?src=scanner"
 }
 
 func scan(w io.Writer, now time.Time) *report.Report {
