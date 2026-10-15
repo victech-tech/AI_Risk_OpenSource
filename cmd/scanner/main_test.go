@@ -54,7 +54,7 @@ func TestYesWritesReport(t *testing.T) {
 	if code := run([]string{"--yes", "--out", dir, "--no-browser"}, strings.NewReader(""), &out); code != 0 {
 		t.Fatalf("exit %d: %s", code, out.String())
 	}
-	for _, want := range []string{"Scan finished", "Your results page:", "which AI tools can see or control this PC", "how to switch each one off", "blocked from sending anything", reportURL} {
+	for _, want := range []string{"Scan finished", "Your results page:", "which AI tools can see or control this PC", "how to switch each one off", "blocked from sending anything", reportURL, "Get alerts about risky new AI tools: https://aiexposurechecker.com/subscribe/?src=scanner"} {
 		if !strings.Contains(out.String(), want) {
 			t.Errorf("finish screen missing %q", want)
 		}
