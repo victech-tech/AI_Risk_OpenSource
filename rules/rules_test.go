@@ -179,7 +179,8 @@ func checkWindowsSteps(t *testing.T, where string, r rule) {
 	if len(r.Match.InstalledAppName) > 0 && !strings.Contains(lower, "uninstall") {
 		t.Errorf("%s: matches installed apps, so the Windows steps must say how to uninstall it", where)
 	}
-	if len(r.Match.ExtensionID) > 0 && !(strings.Contains(lower, "extension") && (strings.Contains(lower, "remove") || strings.Contains(lower, "uninstall"))) {
+	removesExtension := strings.Contains(lower, "extension") && (strings.Contains(lower, "remove") || strings.Contains(lower, "uninstall"))
+	if len(r.Match.ExtensionID) > 0 && !removesExtension {
 		t.Errorf("%s: matches an extension, so the Windows steps must say how to remove the extension", where)
 	}
 	if strings.Contains(text, "Installed apps") && !strings.Contains(text, "Apps & features") {
