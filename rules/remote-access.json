@@ -22,7 +22,7 @@
     "baseRisk": "high",
     "summary": "Remote control software. Someone with access can see your screen, use your mouse and keyboard, and copy files, from anywhere.",
     "howToTurnOff": {
-      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording.",
       "ios": "Delete the TeamViewer app if you do not use it.",
       "android": "Uninstall TeamViewer (and any TeamViewer add-on) from Settings > Apps if you do not use it."
@@ -30,7 +30,7 @@
     "links": [
       "https://www.teamviewer.com/"
     ],
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "anydesk",
@@ -55,14 +55,14 @@
     "baseRisk": "high",
     "summary": "Remote control software. Someone with access can see your screen and use your mouse and keyboard. Scammers often ask people to install it.",
     "howToTurnOff": {
-      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording.",
       "android": "Uninstall AnyDesk (and any AnyDesk plugin) from Settings > Apps if you do not use it."
     },
     "links": [
       "https://anydesk.com/"
     ],
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "rustdesk",
@@ -87,11 +87,11 @@
     "baseRisk": "high",
     "summary": "Free remote control software. Someone with access can see your screen and use your mouse and keyboard.",
     "howToTurnOff": {
-      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording.",
       "android": "Uninstall RustDesk from Settings > Apps if you do not use it."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "chrome-remote-desktop",
@@ -118,10 +118,10 @@
     "baseRisk": "high",
     "summary": "Lets someone connect to this computer from another device to see the screen and use it. It works whenever the computer is on. The browser extension of the same name sets it up.",
     "howToTurnOff": {
-      "windows": "Visit remotedesktop.google.com/access and delete this computer from the list. Then uninstall Chrome Remote Desktop Host from Settings > Apps > Installed apps.",
-      "mac": "Visit remotedesktop.google.com/access and delete this computer from the list, then remove the Chrome Remote Desktop host."
+      "windows": "1. Visit remotedesktop.google.com/access and delete this computer from the list. 2. Uninstall Chrome Remote Desktop Host: open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots). Windows may ask for an administrator password. 3. In Chrome or Edge, type chrome://extensions (or edge://extensions) in the address bar, find Chrome Remote Desktop and select Remove. All three are needed: the host lets people in, and the extension can set it up again.",
+      "mac": "1. Visit remotedesktop.google.com/access and delete this computer from the list. 2. Remove the host: open the Chrome Remote Desktop Host Uninstaller in Applications, or drag Chrome Remote Desktop Host to the Bin. 3. In Chrome, type chrome://extensions in the address bar, find Chrome Remote Desktop and select Remove."
     },
-    "lastReviewed": "2026-10-03"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "screenconnect",
@@ -147,10 +147,10 @@
     "baseRisk": "high",
     "summary": "Remote support software used by IT companies. Someone with access can see and control this computer at any time it is on. Scammers sometimes use it too.",
     "howToTurnOff": {
-      "windows": "If your workplace or IT provider did not set this up, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "If your workplace or IT provider did not set this up, uninstall it: open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "splashtop",
@@ -171,10 +171,10 @@
     "baseRisk": "high",
     "summary": "Remote access software. Someone with access can see this computer's screen and control it.",
     "howToTurnOff": {
-      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "goto-logmein",
@@ -197,10 +197,10 @@
     "baseRisk": "high",
     "summary": "Remote access and support software. Someone with access can see and control this computer.",
     "howToTurnOff": {
-      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "vnc-server",
@@ -224,10 +224,10 @@
     "baseRisk": "high",
     "summary": "Remote screen sharing software. Someone with the password can see and control this computer.",
     "howToTurnOff": {
-      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "Open System Settings > General > Sharing and switch off Screen Sharing and Remote Management if you do not use them. If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "quick-assist",
@@ -247,9 +247,9 @@
     "baseRisk": "medium",
     "summary": "Built into Windows. It lets someone else see or control your PC after you give them a code. Scammers often ask people to open it. Only use it with someone you know and trust.",
     "howToTurnOff": {
-      "windows": "Close Quick Assist to end the session straight away. To remove it, open Settings > Apps > Installed apps, find Quick Assist and choose Uninstall."
+      "windows": "Close Quick Assist to end the session straight away. To remove it, open Settings > Apps > Installed apps (Apps & features on Windows 10), find Quick Assist and choose Uninstall."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "parsec",
@@ -273,10 +273,10 @@
     "baseRisk": "medium",
     "summary": "Remote desktop software, often used for games. Someone you approve can see your screen and use your keyboard and mouse.",
     "howToTurnOff": {
-      "windows": "Open Parsec > Settings > Host and switch off hosting. If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "Open Parsec > Settings > Host and switch off hosting. If you did not set this up yourself, or do not use it any more, uninstall it: open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "If you did not set this up yourself, or do not use it any more, quit it and drag it from Applications to the Bin. Also check System Settings > Privacy & Security > Accessibility and Screen & System Audio Recording."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "ios-device-management",

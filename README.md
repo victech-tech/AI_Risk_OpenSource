@@ -1,6 +1,6 @@
 # AI Exposure Scanner
 
-A free, open-source Windows program that lists which AI tools, remote access tools and monitoring tools on your PC could see or control it. It makes a report file that you can read yourself, then drop onto the AI Exposure Check website, which explains the results in plain English **inside your browser**. Nothing is uploaded.
+A free, open-source Windows program that lists which AI tools, remote access tools and monitoring tools on your PC could see or control it. It makes a report file that you can read yourself, then drop onto the AI Exposure Checker website, which explains the results in plain English **inside your browser**. Nothing is uploaded.
 
 - **Read-only.** It never changes, deletes or installs anything.
 - **No internet.** The scanner makes no network connections at all.
@@ -19,7 +19,7 @@ A free, open-source Windows program that lists which AI tools, remote access too
    - `ai-exposure-report-YYYYMMDD-HHMM.html`: your results page. Double-click it to see your results again.
    - `ai-exposure-report-YYYYMMDD-HHMM.json`: the report data. You can open it in Notepad to see exactly what it contains.
 
-The results page loads only its display code from the AI Exposure Check website. Your report stays inside the file, and the page's own security settings (a Content Security Policy) stop it sending data anywhere. Without internet, the page tells you to drag the `.json` file onto the website's report page instead.
+The results page loads only its display code from the AI Exposure Checker website. Your report stays inside the file, and the page's own security settings (a Content Security Policy) stop it sending data anywhere. Without internet, the page tells you to drag the `.json` file onto the website's report page instead.
 
 ### Microsoft Store version (coming soon)
 
@@ -53,7 +53,7 @@ This is the complete list. The scanner reads nothing else. Any change to this li
 |---|---|---|
 | Installed apps | Registry `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall` (64-bit and `WOW6432Node`) and `HKCU\...\Uninstall` | Name, publisher, version |
 | Programs running now | The Windows process list | Program name and file path (your user name replaced with `<user>`) |
-| Programs that start automatically | `HKCU` and `HKLM` `...\CurrentVersion\Run` keys (including `WOW6432Node`); your Startup folder and the all-users Startup folder | Entry name and program name only (no arguments) |
+| Programs that start automatically | `HKCU` and `HKLM` `...\CurrentVersion\Run` keys (including `WOW6432Node`); your Startup folder and the all-users Startup folder. `HKCU` and `HKLM` `...\CurrentVersion\Explorer\StartupApproved\Run`, `Run32` and `StartupFolder`, only to leave out entries you switched off in Settings > Apps > Startup | Entry name and program name only (no arguments) |
 | Privacy permissions | `HKCU\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\` for `microphone`, `webcam`, `location`, `graphicsCaptureProgrammatic`, `graphicsCaptureWithoutBorder` | App name, allowed yes/no, last used time |
 | Browser extensions | Chrome, Edge and Brave: `%LOCALAPPDATA%\<browser>\User Data\<profile>\Extensions\<id>\<version>\manifest.json` and its `_locales\*\messages.json`. Firefox: `%APPDATA%\Mozilla\Firefox\Profiles\<profile>\extensions.json` | Name, id, version, permissions, enabled (Firefox only) |
 | Code editor extensions | `%USERPROFILE%\.vscode\extensions`, `.cursor\extensions`, `.windsurf\extensions`: each extension's `package.json` and `package.nls.json` | Name, id, version |

@@ -251,3 +251,21 @@ func TestSectionsCoverReportKeys(t *testing.T) {
 		}
 	}
 }
+
+func TestStartupSwitchedOff(t *testing.T) {
+	cases := []struct {
+		in   []byte
+		want bool
+	}{
+		{nil, false},
+		{[]byte{0x02, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, false},
+		{[]byte{0x06, 0, 0, 0}, false},
+		{[]byte{0x03, 0, 0, 0, 0x8b, 0x1c, 0, 0, 0, 0, 0, 0}, true},
+		{[]byte{0x07}, true},
+	}
+	for _, c := range cases {
+		if got := StartupSwitchedOff(c.in); got != c.want {
+			t.Errorf("StartupSwitchedOff(%v) = %v, want %v", c.in, got, c.want)
+		}
+	}
+}

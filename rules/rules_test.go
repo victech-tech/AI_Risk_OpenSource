@@ -148,6 +148,7 @@ func checkRule(t *testing.T, where string, r rule) {
 			t.Errorf("%s: howToTurnOff.%s is too short", where, p)
 		}
 	}
+	checkWindowsSteps(t, where, r)
 	lower := strings.ToLower(r.Summary)
 	for _, j := range jargon {
 		if strings.Contains(lower, j) {
@@ -161,5 +162,28 @@ func checkRule(t *testing.T, where string, r rule) {
 	}
 	if _, err := time.Parse("2006-01-02", r.LastReviewed); err != nil {
 		t.Errorf("%s: lastReviewed must be a date like 2026-10-01", where)
+	}
+}
+
+// checkWindowsSteps checks that the Windows steps remove everything the rule
+// matches on. A finding stays on the report while any matched item is still
+// there, so steps that leave one behind look to people as if they do not
+// work.
+func checkWindowsSteps(t *testing.T, where string, r rule) {
+	t.Helper()
+	text, ok := r.HowToTurnOff["windows"]
+	if !ok {
+		return
+	}
+	lower := strings.ToLower(text)
+	if len(r.Match.InstalledAppName) > 0 && !strings.Contains(lower, "uninstall") {
+		t.Errorf("%s: matches installed apps, so the Windows steps must say how to uninstall it", where)
+	}
+	removesExtension := strings.Contains(lower, "extension") && (strings.Contains(lower, "remove") || strings.Contains(lower, "uninstall"))
+	if len(r.Match.ExtensionID) > 0 && !removesExtension {
+		t.Errorf("%s: matches an extension, so the Windows steps must say how to remove the extension", where)
+	}
+	if strings.Contains(text, "Installed apps") && !strings.Contains(text, "Apps & features") {
+		t.Errorf("%s: Windows 10 calls Installed apps \"Apps & features\"; mention both", where)
 	}
 }

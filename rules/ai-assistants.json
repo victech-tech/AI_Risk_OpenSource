@@ -20,7 +20,7 @@
     "baseRisk": "medium",
     "summary": "OpenAI's ChatGPT app. In voice mode it listens through your microphone. You can also let it see your screen, photos, files or other apps' windows when you share them.",
     "howToTurnOff": {
-      "windows": "Open ChatGPT > Settings to check what it can access. To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "Open ChatGPT > Settings to check what it can access. To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "Open System Settings > Privacy & Security and check Microphone, Screen & System Audio Recording and Accessibility for ChatGPT. To remove it, quit it, then drag it from Applications to the Bin.",
       "ios": "Open Settings > Apps > ChatGPT and switch off Microphone, Camera and Photos if you do not use them.",
       "android": "Open Settings > Apps > ChatGPT > Permissions and switch off Microphone, Camera and Photos if you do not use them."
@@ -28,7 +28,7 @@
     "links": [
       "https://openai.com/policies/privacy-policy/"
     ],
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "claude-desktop",
@@ -54,7 +54,7 @@
     "baseRisk": "medium",
     "summary": "Anthropic's Claude app. It can read files you give it. If tool connections (called connectors or MCP servers) are added, it can also open files on your computer or run programs when you approve.",
     "howToTurnOff": {
-      "windows": "Open Claude > Settings > Connectors (or Developer) and remove any you do not use. To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "Open Claude > Settings > Connectors (or Developer) and remove any you do not use. To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "Open Claude > Settings > Connectors and remove any you do not use. Check System Settings > Privacy & Security > Microphone. To remove it, quit it, then drag it from Applications to the Bin.",
       "ios": "Open Settings > Apps > Claude and switch off Microphone, Camera and Photos if you do not use them.",
       "android": "Open Settings > Apps > Claude > Permissions and switch off anything you do not use."
@@ -62,7 +62,7 @@
     "links": [
       "https://www.anthropic.com/legal/privacy"
     ],
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "microsoft-copilot",
@@ -86,7 +86,7 @@
     "baseRisk": "medium",
     "summary": "Microsoft's Copilot assistant. It can listen in voice mode and, with Copilot Vision, see what is on your screen when you share it. It may start with Windows.",
     "howToTurnOff": {
-      "windows": "Open Copilot > your profile > Settings to check voice and Vision. To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "Open Copilot > your profile > Settings to check voice and Vision. To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "Check System Settings > Privacy & Security > Microphone and Screen & System Audio Recording. To remove it, quit it, then drag it from Applications to the Bin.",
       "ios": "Open Settings > Apps > Copilot and switch off Microphone, Camera and Photos if you do not use them.",
       "android": "Open Settings > Apps > Copilot > Permissions and switch off anything you do not use."
@@ -94,7 +94,7 @@
     "links": [
       "https://privacy.microsoft.com/"
     ],
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "windows-recall",
@@ -136,13 +136,13 @@
     "howToTurnOff": {
       "android": "Open the Gemini app > your profile picture > Settings. Switch off Hey Google and Gemini on lock screen if you do not use them. To stop it seeing your screen, switch off Share screen with Gemini (or similar) in the same menu.",
       "ios": "Open Settings > Apps > Gemini (or Google) and switch off Microphone and Camera if you do not use them.",
-      "windows": "Gemini runs in your browser. Visit gemini.google.com > Settings > Apps to see which Google apps it can use.",
+      "windows": "Gemini runs in your browser. Visit gemini.google.com > Settings > Apps to see which Google apps it can use. If the Google Gemini app is installed, open Settings > Apps > Installed apps (Apps & features on Windows 10), find Google Gemini and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "Gemini runs in your browser. Visit gemini.google.com > Settings > Apps to see which Google apps it can use."
     },
     "links": [
       "https://support.google.com/gemini/"
     ],
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "perplexity-app",
@@ -163,12 +163,12 @@
     "baseRisk": "low",
     "summary": "An AI search assistant. It listens through your microphone when you use voice search.",
     "howToTurnOff": {
-      "windows": "To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "To remove it, quit it, then drag it from Applications to the Bin.",
       "ios": "Open Settings > Apps > Perplexity and switch off Microphone if you do not use it.",
       "android": "Open Settings > Apps > Perplexity > Permissions and switch off Microphone if you do not use it."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "apple-intelligence-siri",
@@ -208,14 +208,14 @@
     "baseRisk": "medium",
     "summary": "Microsoft's Copilot app for Microsoft 365. When you are signed in, it can read your documents, emails and chats in Microsoft 365 to answer questions, and it listens in voice mode.",
     "howToTurnOff": {
-      "windows": "To stop it starting with Windows, open Settings > Apps > Startup and switch Microsoft 365 Copilot off. To remove it, open Settings > Apps > Installed apps, find Microsoft 365 Copilot, select the three dots and choose Uninstall. Word, Excel and Outlook keep working.",
+      "windows": "To stop it starting with Windows, open Settings > Apps > Startup and switch Microsoft 365 Copilot off. To remove it, open Settings > Apps > Installed apps (Apps & features on Windows 10), find Microsoft 365 Copilot and choose Uninstall (on Windows 11 it is under the three dots). Word, Excel and Outlook keep working.",
       "ios": "Open Settings > Apps > Microsoft 365 Copilot and switch off Microphone, Camera and Photos if you do not use them.",
       "android": "Open Settings > Apps > Microsoft 365 Copilot > Permissions and switch off anything you do not use."
     },
     "links": [
       "https://privacy.microsoft.com/"
     ],
-    "lastReviewed": "2026-10-03"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "opera-ai",
@@ -236,13 +236,13 @@
     "baseRisk": "low",
     "summary": "A web browser with an AI assistant called Aria built in. When you use the assistant, it can read the page you are on.",
     "howToTurnOff": {
-      "windows": "In Opera, open Settings (Alt+P), search for \"Aria\" and switch off the AI features you do not use. To stop Opera starting with Windows, open Settings > Apps > Startup and switch Opera off. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "In Opera, open Settings (Alt+P), search for \"Aria\" and switch off the AI features you do not use. To stop Opera starting with Windows, open Settings > Apps > Startup and switch Opera off. To remove it, open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "In Opera, open Settings, search for \"Aria\" and switch off the AI features you do not use."
     },
     "links": [
       "https://www.opera.com/privacy"
     ],
-    "lastReviewed": "2026-10-03"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "ollama",
@@ -263,13 +263,13 @@
     "baseRisk": "low",
     "summary": "Runs AI models on your own computer. It does not watch what you do, but it keeps a local service running that other programs on this computer can use.",
     "howToTurnOff": {
-      "windows": "Right-click the Ollama icon near the clock and choose Quit. To stop it starting with Windows, open Settings > Apps > Startup and switch Ollama off. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "Right-click the Ollama icon near the clock and choose Quit. To stop it starting with Windows, open Settings > Apps > Startup and switch Ollama off. To remove it, open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "Click the Ollama icon in the menu bar and choose Quit. To stop it starting automatically, open System Settings > General > Login Items and remove Ollama."
     },
     "links": [
       "https://github.com/ollama/ollama"
     ],
-    "lastReviewed": "2026-10-03"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "comfyui",
@@ -287,12 +287,12 @@
     "baseRisk": "low",
     "summary": "Creates images and video with AI models on your own computer. It reads and saves files in its own folders, and add-ons you install can run their own code.",
     "howToTurnOff": {
-      "windows": "Close ComfyUI when you are not using it, and only install add-ons (custom nodes) from people you trust. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "Close ComfyUI when you are not using it, and only install add-ons (custom nodes) from people you trust. To remove it, open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "Quit ComfyUI when you are not using it, and only install add-ons (custom nodes) from people you trust."
     },
     "links": [
       "https://www.comfy.org/"
     ],
-    "lastReviewed": "2026-10-03"
+    "lastReviewed": "2026-10-25"
   }
 ]
