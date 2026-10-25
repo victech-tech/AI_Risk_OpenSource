@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/victech-tech/AI_Risk_OpenSource/schema/report.schema.json",
-  "title": "AI Exposure Check scanner report",
+  "title": "AI Exposure Checker scanner report",
   "description": "The file written by ai-exposure-scanner. Version 1. It never contains secrets, file contents, browsing history or the user's home folder name (shown as <user>).",
   "type": "object",
   "required": ["schemaVersion", "scanner", "scannedAt", "os"],

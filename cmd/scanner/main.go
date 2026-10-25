@@ -117,7 +117,7 @@ func run(args []string, stdin io.Reader, stdout io.Writer) int {
 }
 
 func printIntro(w io.Writer, outPath string) {
-	fmt.Fprintf(w, `AI Exposure Check - scanner %s
+	fmt.Fprintf(w, `AI Exposure Checker - scanner %s
 
 This program makes a list of the AI tools and related settings on this PC,
 so you can see which ones can see or control your computer.

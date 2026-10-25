@@ -33,7 +33,7 @@ if ($Kind -eq 'test') {
   $IdentityName = 'AIExposureCheck.Scanner.Test'
   # The OID marks the package as unsigned, so it can never pass for the real one.
   $Publisher = 'CN=AI Exposure Check Test, OID.2.25.311729368913984317654407730594956997722=1'
-  $PublisherDisplayName = 'AI Exposure Check (test build)'
+  $PublisherDisplayName = 'AI Exposure Checker (test build)'
   $displayName = 'AI Exposure Scanner (test)'
 } else {
   if (-not $IdentityName -or -not $Publisher -or -not $PublisherDisplayName) {

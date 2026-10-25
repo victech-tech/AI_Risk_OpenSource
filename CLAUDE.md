@@ -1,6 +1,6 @@
 # CLAUDE.md — AI Exposure Scanner (public, open source)
 
-This is **Repo B** of AI Exposure Check. The full design lives in the private repo (`victech-tech/AI_Risk_Private`, `docs/DESIGN.md`); this file summarises the parts that apply here. The private repo's design doc is the source of truth.
+This is **Repo B** of AI Exposure Checker. The full design lives in the private repo (`victech-tech/AI_Risk_Private`, `docs/DESIGN.md`); this file summarises the parts that apply here. The private repo's design doc is the source of truth.
 
 ## Keep the design document up to date
 

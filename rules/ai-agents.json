@@ -19,13 +19,13 @@
     "baseRisk": "high",
     "summary": "A web browser with ChatGPT built in. In agent mode it can click, type and fill in forms on websites for you, using the sites you are logged in to.",
     "howToTurnOff": {
-      "windows": "Open Atlas > Settings and switch off browser memories and agent access to logged-in sites if you do not use them. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "Open Atlas > Settings and switch off browser memories and agent access to logged-in sites if you do not use them. To remove it, open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "Open Atlas > Settings and switch off browser memories and agent access to logged-in sites if you do not use them. To remove it, quit it, then drag it from Applications to the Bin."
     },
     "links": [
       "https://openai.com/"
     ],
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "perplexity-comet",
@@ -47,13 +47,13 @@
     "baseRisk": "high",
     "summary": "A web browser with an AI assistant built in. The assistant can read the pages you visit and click, type and fill in forms for you.",
     "howToTurnOff": {
-      "windows": "Open Comet > Settings to limit what the assistant can do. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
-      "mac": "Open Comet > Settings to limit what the assistant can do. To remove it, quit it, then drag it from Applications to the Bin."
+      "windows": "Changing Comet's settings does not remove it, so it stays on this report while it is installed. To keep it but limit it, open Comet > Settings and switch off the assistant features you do not use. To remove it: close every Comet window, and if its icon is near the clock, right-click it and choose Exit. Then open Settings > Apps > Installed apps (Apps & features on Windows 10), find Comet and choose Uninstall (on Windows 11 it is under the three dots).",
+      "mac": "Changing Comet's settings does not remove it, so it stays on this report while it is installed. To keep it but limit it, open Comet > Settings and switch off the assistant features you do not use. To remove it, quit it (Comet > Quit Comet), then drag it from Applications to the Bin."
     },
     "links": [
       "https://www.perplexity.ai/"
     ],
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "dia-browser",
@@ -74,10 +74,10 @@
     "baseRisk": "medium",
     "summary": "A web browser with an AI assistant that can read the tabs you have open to answer questions about them.",
     "howToTurnOff": {
-      "windows": "To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "To remove it, open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "Open Dia > Settings to limit what the assistant can read. To remove it, quit it, then drag it from Applications to the Bin."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "open-interpreter",
@@ -126,13 +126,13 @@
     "baseRisk": "high",
     "summary": "Records your screen and microphone all the time so AI tools can search and use what you have seen and heard. Recordings are kept on your computer.",
     "howToTurnOff": {
-      "windows": "Open Screenpipe and stop recording. To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "Open Screenpipe and stop recording. To stop it starting with Windows, open Settings > Apps > Startup and switch it off. To remove it, open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "Open Screenpipe and stop recording. Then open System Settings > Privacy & Security and remove it from Screen & System Audio Recording and Microphone. To remove it, quit it, then drag it from Applications to the Bin."
     },
     "links": [
       "https://github.com/mediar-ai/screenpipe"
     ],
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "lm-studio",
@@ -157,9 +157,9 @@
     "baseRisk": "low",
     "summary": "Runs AI models on your own computer. If tool connections (MCP servers) are added, the AI can use them to open files or run programs.",
     "howToTurnOff": {
-      "windows": "Open LM Studio > Program > Edit mcp.json and remove servers you do not use. To remove it, open Settings > Apps > Installed apps, find it, select the three dots and choose Uninstall.",
+      "windows": "Open LM Studio > Program > Edit mcp.json and remove servers you do not use. To remove it, open Settings > Apps > Installed apps (Apps & features on Windows 10), find it and choose Uninstall (on Windows 11 it is under the three dots).",
       "mac": "Open LM Studio > Program > Edit mcp.json and remove servers you do not use. To remove it, quit it, then drag it from Applications to the Bin."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   }
 ]

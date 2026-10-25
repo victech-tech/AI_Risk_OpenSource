@@ -18,10 +18,10 @@
     "baseRisk": "high",
     "summary": "Employee monitoring software. It can record the screen, websites visited, apps used and typing, and send it to an employer's dashboard.",
     "howToTurnOff": {
-      "windows": "If this is a work computer, your employer may have installed it; ask them what it records. If it is your own computer and you did not install it, uninstall it from Settings > Apps > Installed apps. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
+      "windows": "If this is a work computer, your employer may have installed it; ask them what it records. If it is your own computer and you did not install it, uninstall it from Settings > Apps > Installed apps (Apps & features on Windows 10). If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
       "mac": "If this is a work computer, your employer may have installed it; ask them what it records. If it is your own computer and you did not install it, remove it and check System Settings > Privacy & Security for its permissions. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "activtrak",
@@ -41,10 +41,10 @@
     "baseRisk": "high",
     "summary": "Employee monitoring software. It can record the apps and websites used and take screenshots, and send them to an employer.",
     "howToTurnOff": {
-      "windows": "If this is a work computer, your employer may have installed it; ask them what it records. If it is your own computer and you did not install it, uninstall it from Settings > Apps > Installed apps. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
+      "windows": "If this is a work computer, your employer may have installed it; ask them what it records. If it is your own computer and you did not install it, uninstall it from Settings > Apps > Installed apps (Apps & features on Windows 10). If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
       "mac": "If this is a work computer, your employer may have installed it; ask them what it records. If it is your own computer and you did not install it, remove it and check System Settings > Privacy & Security for its permissions. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "hubstaff",
@@ -66,10 +66,10 @@
     "baseRisk": "medium",
     "summary": "Time tracking software. While tracking is on, it can take screenshots and record which apps and websites are used.",
     "howToTurnOff": {
-      "windows": "Stop the timer when you are not working. If this is a work computer, your employer may have installed it; ask them what it records. If it is your own computer and you did not install it, uninstall it from Settings > Apps > Installed apps. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
+      "windows": "Stop the timer when you are not working. If this is a work computer, your employer may have installed it; ask them what it records. If it is your own computer and you did not install it, uninstall it from Settings > Apps > Installed apps (Apps & features on Windows 10). If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
       "mac": "Stop the timer when you are not working. If this is a work computer, your employer may have installed it; ask them what it records. If it is your own computer and you did not install it, remove it and check System Settings > Privacy & Security for its permissions. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "time-doctor",
@@ -89,10 +89,10 @@
     "baseRisk": "medium",
     "summary": "Time tracking software. While tracking is on, it can take screenshots and record which apps and websites are used.",
     "howToTurnOff": {
-      "windows": "If this is a work computer, your employer may have installed it; ask them what it records. If it is your own computer and you did not install it, uninstall it from Settings > Apps > Installed apps. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
+      "windows": "If this is a work computer, your employer may have installed it; ask them what it records. If it is your own computer and you did not install it, uninstall it from Settings > Apps > Installed apps (Apps & features on Windows 10). If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
       "mac": "If this is a work computer, your employer may have installed it; ask them what it records. If it is your own computer and you did not install it, remove it and check System Settings > Privacy & Security for its permissions. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "qustodio",
@@ -111,7 +111,7 @@
     "baseRisk": "medium",
     "summary": "Parental control software. It can record websites visited and app use, and block content, reporting to a parent's account.",
     "howToTurnOff": {
-      "windows": "If you are an adult and did not install this, uninstall it from Settings > Apps > Installed apps (it may ask for the parent's password). If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
+      "windows": "If you are an adult and did not install this, uninstall it from Settings > Apps > Installed apps (Apps & features on Windows 10; it may ask for the parent's password). If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
       "mac": "If you are an adult and did not install this, remove it (it may ask for the parent's password). If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
       "android": "Open Settings > Security > Device admin apps, switch off Qustodio, then uninstall it. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
       "ios": "Open Settings > General > VPN & Device Management and remove the Qustodio profile, then delete the app. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them."
@@ -140,9 +140,9 @@
     "howToTurnOff": {
       "android": "Open Settings > Apps and show system apps. Look for unfamiliar apps with names like Update Service or System Service. Also check Settings > Security > Device admin apps and Accessibility. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
       "ios": "Change your Apple Account password and turn on two-factor authentication, because this kind of tool often works through your iCloud backup. Check Settings > General > VPN & Device Management. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
-      "windows": "Uninstall it from Settings > Apps > Installed apps. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them."
+      "windows": "Uninstall it from Settings > Apps > Installed apps (Apps & features on Windows 10). If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   },
   {
     "id": "flexispy",
@@ -167,9 +167,9 @@
     "howToTurnOff": {
       "android": "Open Settings > Apps and show system apps. Look for apps you do not recognise. Check Settings > Security > Device admin apps and Accessibility. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
       "ios": "Change your Apple Account password and turn on two-factor authentication. Check Settings > General > VPN & Device Management. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
-      "windows": "Uninstall it from Settings > Apps > Installed apps. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
+      "windows": "Uninstall it from Settings > Apps > Installed apps (Apps & features on Windows 10). If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them.",
       "mac": "Remove any app you do not recognise and check System Settings > Privacy & Security. If you think someone else put this on your device without asking, read our safety page before removing it, because removing it may alert them."
     },
-    "lastReviewed": "2026-10-01"
+    "lastReviewed": "2026-10-25"
   }
 ]
