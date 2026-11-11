@@ -41,7 +41,7 @@ jobs:
       SIGNING_ENABLED: ${{ secrets.SIGNPATH_API_TOKEN != '' }}
       TAG: ${{ inputs.version || github.ref_name }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Create the tag (when run by hand)
@@ -138,7 +138,7 @@ jobs:
       TAG: ${{ inputs.version || github.ref_name }}
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Download the released .exe files
         shell: pwsh
         run: gh release download $env:TAG --repo $env:GITHUB_REPOSITORY --pattern "*.exe" --dir dist
